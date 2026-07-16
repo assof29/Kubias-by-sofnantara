@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+         <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -47,11 +47,14 @@
                 <button onclick="filterNegara('semua')" class="w-full text-left text-xs px-2 py-1.5 rounded-lg hover:bg-emerald-50 text-emerald-800 font-medium flex justify-between items-center">
                     <span>🌍 Semua Negara</span>
                 </button>
-                <button onclick="filterNegara('jepang')" class="w-full text-left text-xs px-2 py-1.5 rounded-lg hover:bg-emerald-50 text-gray-700 flex justify-between items-center">
-                    <span>🇯🇵 Jepang (Matcha)</span>
-                </button>
                 <button onclick="filterNegara('indonesia')" class="w-full text-left text-xs px-2 py-1.5 rounded-lg hover:bg-emerald-50 text-gray-700 flex justify-between items-center">
-                    <span>🇮🇩 Indonesia (Pandan)</span>
+                    <span>🇮🇩 Indonesia</span>
+                </button>
+                <button onclick="filterNegara('jepang')" class="w-full text-left text-xs px-2 py-1.5 rounded-lg hover:bg-emerald-50 text-gray-700 flex justify-between items-center">
+                    <span>🇯🇵 Jepang</span>
+                </button>
+                <button onclick="filterNegara('korea')" class="w-full text-left text-xs px-2 py-1.5 rounded-lg hover:bg-emerald-50 text-gray-700 flex justify-between items-center">
+                    <span>🇰🇷 Korea</span>
                 </button>
             </div>
         </div>
@@ -78,76 +81,182 @@
     </div>
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black opacity-40 z-40 hidden"></div>
 
-    <main id="tab-etalase" class="flex-1 p-4 max-w-4xl w-full mx-auto pb-24" onclick="tutupPilihanNegaraMousse(event)">
+    <main id="tab-etalase" class="flex-1 p-4 max-w-4xl w-full mx-auto overflow-y-auto pb-24" onclick="tutupPilihanNegaraMousse(event)">
         <h2 class="text-lg font-bold text-emerald-800 mb-4 flex items-center brand-font">
             <span class="bg-emerald-600 w-2 h-5 rounded-full mr-2 inline-block"></span>
-            Etalase Kue Segar
+            Etalase Kue Segar (25 Menu Pilihan)
         </h2>
+        
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div data-name="matcha mousse cake" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
-                <div>
-                    <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Matcha Cake ]</div>
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-gray-800 text-base">Matcha Mousse Cake</h3>
-                        <span class="text-[10px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold border border-red-100">🇯🇵 Jepang</span>
-                    </div>
-                    <p class="text-xs text-gray-500 mt-1">Kue lembut dengan kombinasi teh hijau asli yang creamy.</p>
-                </div>
-                <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
-                    <span class="font-bold text-emerald-600 text-sm">Rp 45.000</span>
-                    <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
-                        <button onclick="ubahJumlah('p1', -1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
-                        <span id="p1" class="mx-3 text-sm font-bold text-emerald-900">0</span>
-                        <button onclick="ubahJumlah('p1', 1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
-                    </div>
-                </div>
+            
+            <div data-name="pandan roll cake" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Pandan Roll ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Pandan Roll Cake</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇮🇩 Indonesia</span></div><p class="text-[11px] text-gray-500 mt-1">Bolu gulung pandan wangi dengan isian krim manis.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 38.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p1', -1, 'Pandan Roll Cake', 38000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p1" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p1', 1, 'Pandan Roll Cake', 38000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
             </div>
 
-            <div data-name="pandan roll cake" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
-                <div>
-                    <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Pandan Roll ]</div>
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-gray-800 text-base">Pandan Roll Cake</h3>
-                        <span class="text-[10px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold border border-red-100">🇮🇩 Indonesia</span>
-                    </div>
-                    <p class="text-xs text-gray-500 mt-1">Bolu gulung pandan wangi dengan isian krim manis.</p>
-                </div>
-                <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
-                    <span class="font-bold text-emerald-600 text-sm">Rp 38.000</span>
-                    <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
-                        <button onclick="ubahJumlah('p2', -1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
-                        <span id="p2" class="mx-3 text-sm font-bold text-emerald-900">0</span>
-                        <button onclick="ubahJumlah('p2', 1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
-                    </div>
-                </div>
+            <div data-name="lapis legit premium" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Lapis Legit ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Lapis Legit Premium</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇮🇩 Indonesia</span></div><p class="text-[11px] text-gray-500 mt-1">Kue lapis tradisional kaya rempah mentega wiswijan.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 75.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p2', -1, 'Lapis Legit Premium', 75000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p2" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p2', 1, 'Lapis Legit Premium', 75000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
             </div>
+
+            <div data-name="kue lumpur surga" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Lumpur Surga ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Kue Lumpur Surga</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇮🇩 Indonesia</span></div><p class="text-[11px] text-gray-500 mt-1">Kue basah lembut dengan lapisan santan gurih di atasnya.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 20.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p3', -1, 'Kue Lumpur Surga', 20000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p3" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p3', 1, 'Kue Lumpur Surga', 20000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="bika ambon medan" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Bika Ambon ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Bika Ambon Medan</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇮🇩 Indonesia</span></div><p class="text-[11px] text-gray-500 mt-1">Tekstur bersarang sempurna dengan aroma daun jeruk.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 45.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p4', -1, 'Bika Ambon Medan', 45000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p4" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p4', 1, 'Bika Ambon Medan', 45000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="kue sus vla vanila" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Kue Sus ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Kue Sus Vla Vanila</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇮🇩 Indonesia</span></div><p class="text-[11px] text-gray-500 mt-1">Kulit sus renyah dipadukan dengan vla susu yang lumer.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 18.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p5', -1, 'Kue Sus Vla Vanila', 18000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p5" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p5', 1, 'Kue Sus Vla Vanila', 18000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="klepon gula merah" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Klepon ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Klepon Gula Merah</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇮🇩 Indonesia</span></div><p class="text-[11px] text-gray-500 mt-1">Bola ketan isi gula merah cair tabur kelapa parut garing.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 15.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p6', -1, 'Klepon Gula Merah', 15000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p6" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p6', 1, 'Klepon Gula Merah', 15000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="kue ku kacang hijau" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Kue Ku ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Kue Ku Kacang Hijau</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇮🇩 Indonesia</span></div><p class="text-[11px] text-gray-500 mt-1">Kue ketan merah kenyal berbentuk kura-kura manis.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 12.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p7', -1, 'Kue Ku Kacang Hijau', 12000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p7" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p7', 1, 'Kue Ku Kacang Hijau', 12000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="dadar gulung cokelat" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Dadar Gulung ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Dadar Gulung Cokelat</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇮🇩 Indonesia</span></div><p class="text-[11px] text-gray-500 mt-1">Kulit pancake dadar isi pasta cokelat krim pekat.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 16.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p8', -1, 'Dadar Gulung Cokelat', 16000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p8" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p8', 1, 'Dadar Gulung Cokelat', 16000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="proll tape keju" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Proll Tape ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Proll Tape Keju</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇮🇩 Indonesia</span></div><p class="text-[11px] text-gray-500 mt-1">Kue tape singkong panggang padat bertabur keju melimpah.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 35.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p9', -1, 'Proll Tape Keju', 35000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p9" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p9', 1, 'Proll Tape Keju', 35000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="matcha mousse cake" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Matcha Mousse ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Matcha Mousse Cake</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇯🇵 Jepang</span></div><p class="text-[11px] text-gray-500 mt-1">Kue lembut premium dengan bubuk matcha asli Uji Kyoto.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 45.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p10', -1, 'Matcha Mousse Cake', 45000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p10" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p10', 1, 'Matcha Mousse Cake', 45000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="japanese cheesecake" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Japanese Cheesecake ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Japanese Cheesecake</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇯🇵 Jepang</span></div><p class="text-[11px] text-gray-500 mt-1">Kue keju super fluffly yang membal membal di lidah.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 60.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p11', -1, 'Japanese Cheesecake', 60000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p11" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p11', 1, 'Japanese Cheesecake', 60000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="ichigo daifuku mochi" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Mochi Strawberry ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Ichigo Daifuku Mochi</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇯🇵 Jepang</span></div><p class="text-[11px] text-gray-500 mt-1">Mochi elastis isi pasta kacang merah dan stroberi segar utuh.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 25.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p12', -1, 'Ichigo Daifuku Mochi', 25000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p12" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p12', 1, 'Ichigo Daifuku Mochi', 25000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="dorayaki anko" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Dorayaki ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Dorayaki Anko</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇯🇵 Jepang</span></div><p class="text-[11px] text-gray-500 mt-1">Pancake madu jepang isi selai kacang merah manis legendaris.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 22.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p13', -1, 'Dorayaki Anko', 22000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p13" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p13', 1, 'Dorayaki Anko', 22000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="tokyo banana roll" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Tokyo Banana ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Tokyo Banana Roll</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇯🇵 Jepang</span></div><p class="text-[11px] text-gray-500 mt-1">Bolu spons super lembut custard krim pisang manis khas Tokyo.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 55.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p14', -1, 'Tokyo Banana Roll', 55000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p14" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p14', 1, 'Tokyo Banana Roll', 55000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="mitarashi dango" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Dango ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Mitarashi Dango</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇯🇵 Jepang</span></div><p class="text-[11px] text-gray-500 mt-1">Sate bola tepung beras kenyal dengan siraman kecap manis gurih.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 20.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p15', -1, 'Mitarashi Dango', 20000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p15" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p15', 1, 'Mitarashi Dango', 20000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="nagasaki castella" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Castella ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Nagasaki Castella</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇯🇵 Jepang</span></div><p class="text-[11px] text-gray-500 mt-1">Kue bolu spons madu panggang lembap bertekstur lembut padat.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 48.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p16', -1, 'Nagasaki Castella', 48000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p16" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p16', 1, 'Nagasaki Castella', 48000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="melonpan choco" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Melonpan ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Melonpan Choco</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇯🇵 Jepang</span></div><p class="text-[11px] text-gray-500 mt-1">Roti jepang dengan kulit luar biskuit manis renyah motif melon.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 19.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p17', -1, 'Melonpan Choco', 19000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p17" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p17', 1, 'Melonpan Choco', 19000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="korean bento cake" data-country="korea" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Bento Cake ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Korean Bento Cake</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇰🇷 Korea</span></div><p class="text-[11px] text-gray-500 mt-1">Mini custom cake estetis berbalut krim pastel manis.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 50.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p18', -1, 'Korean Bento Cake', 50000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p18" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p18', 1, 'Korean Bento Cake', 50000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="garlic cream cheese bread" data-country="korea" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Garlic Bread ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Garlic Cheese Bread</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇰🇷 Korea</span></div><p class="text-[11px] text-gray-500 mt-1">Roti mentega bawang putih dengan isian cream cheese lumer.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 32.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p19', -1, 'Garlic Cheese Bread', 32000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p19" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p19', 1, 'Garlic Cheese Bread', 32000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="croffle maple glaze" data-country="korea" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Croffle ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Croffle Maple Glaze</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇰🇷 Korea</span></div><p class="text-[11px] text-gray-500 mt-1">Kombinasi croissant waffle renyah berlapis sirup maple karamel.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 28.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p20', -1, 'Croffle Maple Glaze', 28000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p20" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p20', 1, 'Croffle Maple Glaze', 28000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="korean fatcaron" data-country="korea" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Fatcaron ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Korean Fatcaron</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇰🇷 Korea</span></div><p class="text-[11px] text-gray-500 mt-1">Macaron ala Korea berukuran jumbo dengan isian krim super tebal.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 30.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p21', -1, 'Korean Fatcaron', 30000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p21" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p21', 1, 'Korean Fatcaron', 30000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="twisted donut kkwabaegi" data-country="korea" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Kkwabaegi ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Twisted Donut</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇰🇷 Korea</span></div><p class="text-[11px] text-gray-500 mt-1">Donat kepang goreng jadul khas Korea tabur gula kayu manis.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 15.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p22', -1, 'Twisted Donut', 15000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p22" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p22', 1, 'Twisted Donut', 15000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="sweet potato bread" data-country="korea" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Sweet Potato ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Sweet Potato Bread</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇰🇷 Korea</span></div><p class="text-[11px] text-gray-500 mt-1">Roti kenyal mochi berbentuk ubi ungu dengan isian ubi manis asli.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 24.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p23', -1, 'Sweet Potato Bread', 24000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p23" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p23', 1, 'Sweet Potato Bread', 24000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="egg tart premium" data-country="korea" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Egg Tart ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Egg Tart Premium</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇰🇷 Korea</span></div><p class="text-[11px] text-gray-500 mt-1">Tart custard telur ala toko roti Seoul yang gurih, tebal dan creamy.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 21.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p24', -1, 'Egg Tart Premium', 21000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p24" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p24', 1, 'Egg Tart Premium', 21000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
+            <div data-name="injeolmi cake mousse" data-country="korea" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div><div class="w-full h-32 bg-emerald-100 rounded-xl mb-2 flex items-center justify-center text-emerald-600 font-medium text-xs">[ Foto Injeolmi Cake ]</div>
+                <div class="flex items-center justify-between"><h3 class="font-bold text-gray-800 text-sm">Injeolmi Mousse Cake</h3><span class="text-[9px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold">🇰🇷 Korea</span></div><p class="text-[11px] text-gray-500 mt-1">Kue mousse krim kacang kedelai bubuk tradisional Korea.</p></div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-gray-50"><span class="font-bold text-emerald-600 text-sm">Rp 40.000</span><div class="flex items-center bg-emerald-50 rounded-full p-1"><button onclick="ubahJumlah('p25', -1, 'Injeolmi Mousse Cake', 40000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button><span id="p25" class="mx-2 text-xs font-bold text-emerald-900">0</span><button onclick="ubahJumlah('p25', 1, 'Injeolmi Mousse Cake', 40000)" class="w-6 h-6 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button></div></div>
+            </div>
+
         </div>
         <p id="not-found-msg" class="text-center text-gray-400 py-10 hidden">Kue yang kamu cari tidak ditemukan...</p>
 
         <div id="gofood-cart" class="fixed bottom-4 inset-x-4 max-w-xl mx-auto bg-emerald-700 text-white p-3.5 rounded-2xl shadow-xl flex items-center justify-between transform translate-y-24 opacity-0 transition-all duration-300 ease-in-out z-40 hidden">
             <div class="flex items-center space-x-3">
-                <div class="bg-emerald-800 p-2 rounded-xl text-lg relative">
-                    🛍️
-                    <span id="gofood-count" class="absolute -top-1.5 -right-1.5 bg-red-500 text-white font-bold text-[10px] px-1.5 py-0.2 rounded-full border border-emerald-700">0</span>
-                </div>
-                <div>
-                    <p id="gofood-price" class="font-bold text-sm tracking-wide">Rp 0</p>
-                    <p id="gofood-desc" class="text-[10px] text-emerald-200 font-medium">Belum termasuk ongkir</p>
-                </div>
+                <div class="bg-emerald-800 p-2 rounded-xl text-lg relative">🛍️<span id="gofood-count" class="absolute -top-1.5 -right-1.5 bg-red-500 text-white font-bold text-[10px] px-1.5 py-0.2 rounded-full border border-emerald-700">0</span></div>
+                <div><p id="gofood-price" class="font-bold text-sm tracking-wide">Rp 0</p><p id="gofood-desc" class="text-[10px] text-emerald-200 font-medium">Belum termasuk ongkir</p></div>
             </div>
-            <button onclick="pindahKeTabPembayaran()" class="bg-white text-emerald-800 font-bold text-xs px-4 py-2.5 rounded-xl hover:bg-emerald-50 transition active:scale-95">
-                Lanjut Pembayaran →
-            </button>
+            <button onclick="pindahKeTabPembayaran()" class="bg-white text-emerald-800 font-bold text-xs px-4 py-2.5 rounded-xl hover:bg-emerald-50 transition active:scale-95">Lanjut Pembayaran →</button>
         </div>
     </main>
 
-    <main id="tab-pembayaran" class="flex-1 p-4 max-w-md w-full mx-auto hidden pb-10">
+    <main id="tab-pembayaran" class="flex-1 p-4 max-w-md w-full mx-auto hidden overflow-y-auto pb-10">
         <button id="btn-kembali" onclick="returningToCatalog()" class="text-emerald-700 font-semibold flex items-center space-x-1 mb-4 hover:underline text-sm">
             <span>← Kembali Ubah Pesanan</span>
         </button>
 
-        <div class="bg-[#1e2429] text-white rounded-2xl shadow-2xl overflow-hidden p-5 space-y-5 relative">
-            
+        <div class="bg-[#1e2429] text-white rounded-2xl shadow-2xl overflow-hidden p-5 space-y-4 relative">
             <div class="border-b border-gray-700/50 pb-3">
                 <h2 class="text-sm font-semibold tracking-wide text-gray-200">Rincian transaksi</h2>
             </div>
@@ -167,69 +276,41 @@
                         <div class="w-4 h-4 rounded bg-cyan-500 flex items-center justify-center text-[9px] text-white font-bold">💳</div>
                     </div>
                 </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400">Waktu</span>
-                    <span class="font-medium text-gray-200" id="struk-waktu">-</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400">Tanggal</span>
-                    <span class="font-medium text-gray-200" id="struk-tanggal">-</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-gray-400">ID transaksi</span>
-                    <span class="font-mono text-gray-300 text-right truncate max-w-[180px]" id="struk-ref">-</span>
-                </div>
+                <div class="flex justify-between"><span class="text-gray-400">Waktu</span><span class="font-medium text-gray-200" id="struk-waktu">-</span></div>
+                <div class="flex justify-between"><span class="text-gray-400">Tanggal</span><span class="font-medium text-gray-200" id="struk-tanggal">-</span></div>
+                <div class="flex justify-between items-center"><span class="text-gray-400">ID transaksi</span><span class="font-mono text-gray-300 text-right truncate max-w-[180px]" id="struk-ref">-</span></div>
                 
                 <hr class="border-gray-700/50">
 
                 <div class="bg-[#181d20] p-3 rounded-xl space-y-1.5 border border-gray-800">
                     <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider block">Item Belanja:</span>
-                    <div id="checkout-invoice-list" class="space-y-1 text-gray-300"></div>
+                    <div id="checkout-invoice-list" class="space-y-1 text-gray-300 max-h-32 overflow-y-auto pr-1"></div>
                 </div>
 
                 <div id="discount-section" class="border border-dashed border-emerald-600 bg-emerald-950/20 p-2.5 rounded-xl space-y-2">
                     <button onclick="toggleVoucherModal()" class="w-full flex items-center justify-between font-bold text-emerald-400 text-[11px] bg-emerald-900/40 px-2.5 py-1.5 rounded-lg hover:bg-emerald-900/60 transition">
-                        <span id="selected-voucher-text">🎟️ Pakai Diskon / Voucher</span>
+                        <span id="selected-voucher-text">🎟 ...Pakai Diskon / Voucher</span>
                         <span class="text-emerald-500 text-[10px]">Lihat ></span>
                     </button>
-                    
                     <div id="voucher-list" class="hidden space-y-1.5 pt-1">
                         <div onclick="applyVoucher('persen', 10, 'Diskon Kilat 10%')" class="border border-gray-700 bg-[#252c32] p-2 rounded-lg cursor-pointer hover:border-emerald-500 transition flex justify-between items-center">
-                            <div>
-                                <p class="font-bold text-gray-200 text-[11px]">🎟️ Diskon Kilat 10%</p>
-                                <p class="text-[9px] text-gray-400">Potongan langsung dari subtotal</p>
-                            </div>
+                            <div><p class="font-bold text-gray-200 text-[11px]">🎟️ Diskon Kilat 10%</p><p class="text-[9px] text-gray-400">Potongan langsung subtotal</p></div>
                         </div>
                         <div onclick="applyVoucher('nominal', 10000, 'Potongan Ongkir Rp10k')" class="border border-gray-700 bg-[#252c32] p-2 rounded-lg cursor-pointer hover:border-emerald-500 transition flex justify-between items-center">
-                            <div>
-                                <p class="font-bold text-gray-200 text-[11px]">🚚 Potongan Ongkir Rp 10.000</p>
-                                <p class="text-[9px] text-gray-400">Hemat ongkos kirim flat</p>
-                            </div>
+                            <div><p class="font-bold text-gray-200 text-[11px]">🚚 Potongan Ongkir Rp 10.000</p><p class="text-[9px] text-gray-400">Hemat ongkos flat</p></div>
                         </div>
                     </div>
                 </div>
 
                 <hr class="border-gray-700/50">
 
-                <div class="flex justify-between">
-                    <span class="text-gray-400">Jumlah</span>
-                    <span class="font-medium text-gray-200" id="checkout-subtotal-price">Rp 0</span>
-                </div>
-                <div id="row-potongan" class="justify-between text-red-400 font-medium hidden">
-                    <span class="text-gray-400">Potongan Diskon</span>
-                    <span id="checkout-discount-price">-Rp 0</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400">Biaya admin</span>
-                    <span class="font-medium text-gray-400"><del class="text-gray-500 mr-1">Rp2.000</del> <span class="text-gray-200 font-normal">Gratis!</span></span>
-                </div>
+                <div class="flex justify-between"><span class="text-gray-400">Jumlah</span><span class="font-medium text-gray-200" id="checkout-subtotal-price">Rp 0</span></div>
+                <div id="row-potongan" class="justify-between text-red-400 font-medium hidden"><span class="text-gray-400">Potongan Diskon</span><span id="checkout-discount-price">-Rp 0</span></div>
+                <div class="flex justify-between"><span class="text-gray-400">Biaya admin</span><span class="font-medium text-gray-400"><del class="text-gray-500 mr-1">Rp2.000</del> <span class="text-gray-200">Gratis!</span></span></div>
 
                 <hr class="border-gray-700/50">
 
-                <div class="flex justify-between items-center pt-1">
-                    <span class="text-sm font-semibold text-gray-200">Total</span>
-                    <span class="text-base font-bold text-gray-100" id="checkout-total-price">Rp 0</span>
-                </div>
+                <div class="flex justify-between items-center pt-1"><span class="text-sm font-semibold text-gray-200">Total</span><span class="text-base font-bold text-gray-100" id="checkout-total-price">Rp 0</span></div>
                 <p class="text-[10px] text-gray-500 mt-1">Harga tercantum sudah termasuk PPN</p>
             </div>
 
@@ -240,9 +321,7 @@
                 </div>
             </div>
 
-            <button id="btn-pay-final" onclick="mulaiProsesLoading()" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl shadow-md hover:bg-emerald-700 transition text-xs tracking-wide flex items-center justify-center">
-                <span>Konfirmasi Pembayaran</span>
-            </button>
+            <button id="btn-pay-final" onclick="mulaiProsesLoading()" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl shadow-md hover:bg-emerald-700 text-xs flex items-center justify-center">Konfirmasi Pembayaran</button>
         </div>
     </main>
 
@@ -256,20 +335,12 @@
                 const splash = document.getElementById('splash-screen');
                 splash.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
                 document.body.classList.remove('overflow-hidden');
-                
                 setTimeout(() => splash.remove(), 150);
             }, 600); 
         });
 
-        function tampilkanPilihanNegara() {
-            document.getElementById('country-options').classList.remove('hidden');
-        }
-
-        function tutupPilihanNegaraMousse(event) {
-            if (!document.getElementById('header-search-bar').contains(event.target)) {
-                document.getElementById('country-options').classList.add('hidden');
-            }
-        }
+        function tampilkanPilihanNegara() { document.getElementById('country-options').classList.remove('hidden'); }
+        function tutupPilihanNegaraMousse(event) { if (!document.getElementById('header-search-bar').contains(event.target)) { document.getElementById('country-options').classList.add('hidden'); } }
 
         function filterNegara(negara) {
             const semuaCardKue = document.querySelectorAll('.product-card');
@@ -278,17 +349,10 @@
 
             semuaCardKue.forEach(card => {
                 const asalNegara = card.getAttribute('data-country');
-                if (negara === 'semua' || asalNegara === negara) {
-                    card.classList.remove('hidden');
-                    adaKueYangCocok = true;
-                } else {
-                    card.classList.add('hidden');
-                }
+                if (negara === 'semua' || asalNegara === negara) { card.classList.remove('hidden'); adaKueYangCocok = true; } 
+                else { card.classList.add('hidden'); }
             });
-
-            if (adaKueYangCocok) pesanKosong.classList.add('hidden');
-            else pesanKosong.classList.remove('hidden');
-
+            if (adaKueYangCocok) pesanKosong.classList.add('hidden'); else pesanKosong.classList.remove('hidden');
             document.getElementById('country-options').classList.add('hidden');
             document.getElementById('search-input').value = negara === 'semua' ? '' : negara.toUpperCase();
         }
@@ -301,15 +365,10 @@
 
             semuaCardKue.forEach(card => {
                 const namaKue = card.getAttribute('data-name');
-                if (namaKue.includes(kataKunci)) {
-                    card.classList.remove('hidden');
-                    adaKueYangCocok = true;
-                } else {
-                    card.classList.add('hidden');
-                }
+                if (namaKue.includes(kataKunci)) { card.classList.remove('hidden'); adaKueYangCocok = true; } 
+                else { card.classList.add('hidden'); }
             });
-            if (adaKueYangCocok) pesanKosong.classList.add('hidden');
-            else pesanKosong.classList.remove('hidden');
+            if (adaKueYangCocok) pesanKosong.classList.add('hidden'); else pesanKosong.classList.remove('hidden');
         }
 
         function toggleSidebar() {
@@ -319,16 +378,12 @@
 
         function ubahJumlah(idProduk, aksi, namaKue, hargaKue) {
             const elemenJumlah = document.getElementById(idProduk);
-            let jumlahSaatIni = parseInt(elemenJumlah.innerText);
-            jumlahSaatIni += aksi;
+            let jumlahSaatIni = parseInt(elemenJumlah.innerText) + aksi;
             if (jumlahSaatIni < 0) jumlahSaatIni = 0;
             elemenJumlah.innerText = jumlahSaatIni;
 
-            if (jumlahSaatIni > 0) {
-                keranjang[idProduk] = { nama: namaKue, jumlah: jumlahSaatIni, harga: hargaKue };
-            } else {
-                delete keranjang[idProduk];
-            }
+            if (jumlahSaatIni > 0) { keranjang[idProduk] = { nama: namaKue, jumlah: jumlahSaatIni, harga: hargaKue }; } 
+            else { delete keranjang[idProduk]; }
             perbaruiTampilanKeranjangGoFood();
         }
 
@@ -336,9 +391,7 @@
             const cartElement = document.getElementById('gofood-cart');
             const priceElement = document.getElementById('gofood-price');
             const countElement = document.getElementById('gofood-count');
-            
-            let totalHarga = 0;
-            let totalKue = 0;
+            let totalHarga = 0, totalKue = 0;
 
             Object.keys(keranjang).forEach(kunci => {
                 const item = keranjang[kunci];
@@ -348,64 +401,41 @@
 
             if (totalKue > 0) {
                 cartElement.classList.remove('hidden');
-                setTimeout(() => {
-                    cartElement.classList.remove('translate-y-24', 'opacity-0');
-                }, 10);
-                
+                setTimeout(() => cartElement.classList.remove('translate-y-24', 'opacity-0'), 10);
                 priceElement.innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
                 countElement.innerText = totalKue;
             } else {
                 cartElement.classList.add('translate-y-24', 'opacity-0');
-                setTimeout(() => {
-                    cartElement.classList.add('hidden');
-                }, 300);
+                setTimeout(() => cartElement.classList.add('hidden'), 300);
             }
         }
 
-        function toggleVoucherModal() {
-            const list = document.getElementById('voucher-list');
-            list.classList.toggle('hidden');
-        }
+        function toggleVoucherModal() { document.getElementById('voucher-list').classList.toggle('hidden'); }
 
         function applyVoucher(tipe, nilai, namaVoucher) {
-            if(tipe === 'persen') {
-                nilaiPotongan = (subtotalMurni * nilai) / 100;
-            } else if(tipe === 'nominal') {
-                nilaiPotongan = nilai;
-            }
-
+            nilaiPotongan = tipe === 'persen' ? (subtotalMurni * nilai) / 100 : nilai;
             if (nilaiPotongan > subtotalMurni) nilaiPotongan = subtotalMurni;
             const totalAkhir = subtotalMurni - nilaiPotongan;
 
             document.getElementById('selected-voucher-text').innerText = `✅ Tersimpan: ${namaVoucher}`;
-            
             const rowPotongan = document.getElementById('row-potongan');
             rowPotongan.className = "flex justify-between text-red-400 font-medium";
             document.getElementById('checkout-discount-price').innerText = `-Rp ${nilaiPotongan.toLocaleString('id-ID')}`;
-            
             document.getElementById('checkout-total-price').innerText = `Rp ${totalAkhir.toLocaleString('id-ID')}`;
             toggleVoucherModal();
         }
 
         function pindahKeTabPembayaran() {
             if (Object.keys(keranjang).length === 0) return;
-
             document.getElementById('brand-logo').classList.add('hidden');
             document.getElementById('header-search-bar').classList.add('hidden');
             document.getElementById('header-left-side').classList.remove('space-x-3');
 
             const sekarang = new Date();
-            const formatTanggal = sekarang.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: '2-digit' });
-            const formatWaktu = sekarang.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }).replace('.', ':');
-            
-            document.getElementById('struk-waktu').innerText = formatWaktu;
-            document.getElementById('struk-tanggal').innerText = formatTanggal;
-            
-            // Generate ID Transaksi panjang acak mirip GoPay
-            const kodeRef = "04202607" + Math.floor(10000000 + Math.random() * 90000000) + "moGEn7Zj...";
-            document.getElementById('struk-ref').innerText = kodeRef;
+            document.getElementById('struk-waktu').innerText = sekarang.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }).replace('.', ':');
+            document.getElementById('struk-tanggal').innerText = sekarang.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: '2-digit' });
+            document.getElementById('struk-ref').innerText = "04202607" + Math.floor(10000000 + Math.random() * 90000000) + "moGEn7Zj...";
 
-            // Reset Status Awal ke Pending
             document.getElementById('struk-status-text').innerText = "Proses Pending";
             document.getElementById('struk-status-text').className = "font-medium text-amber-500";
             document.getElementById('struk-status-icon').innerText = "⏳";
@@ -416,13 +446,12 @@
             
             const btnUtama = document.getElementById('btn-pay-final');
             btnUtama.innerHTML = "<span>Konfirmasi Pembayaran</span>";
-            btnUtama.className = "w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl shadow-md hover:bg-emerald-700 transition text-xs tracking-wide flex items-center justify-center";
+            btnUtama.className = "w-full bg-emerald-600 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center";
             btnUtama.setAttribute('onclick', 'mulaiProsesLoading()');
 
             const invoiceContainer = document.getElementById('checkout-invoice-list');
             invoiceContainer.innerHTML = '';
-            subtotalMurni = 0;
-            nilaiPotongan = 0;
+            subtotalMurni = 0; nilaiPotongan = 0;
 
             document.getElementById('selected-voucher-text').innerText = "🎟️ Pakai Diskon / Voucher";
             document.getElementById('row-potongan').className = "justify-between text-red-400 font-medium hidden";
@@ -448,16 +477,12 @@
             document.getElementById('brand-logo').classList.remove('hidden');
             document.getElementById('header-search-bar').classList.remove('hidden');
             document.getElementById('header-left-side').classList.add('space-x-3');
-
             document.getElementById('tab-pembayaran').classList.add('hidden');
             document.getElementById('tab-etalase').classList.remove('hidden');
         }
 
         function pilihMetodeVisual(metode) {
-            const btnQris = document.getElementById('btn-qris-choice');
-            const btnTf = document.getElementById('btn-tf-choice');
-            const teksMetode = document.getElementById('struk-metode');
-
+            const btnQris = document.getElementById('btn-qris-choice'), btnTf = document.getElementById('btn-tf-choice'), teksMetode = document.getElementById('struk-metode');
             if (metode === 'qris') {
                 btnQris.className = "border border-emerald-600 bg-emerald-950/40 rounded-xl p-2 font-medium text-emerald-400";
                 btnTf.className = "border border-gray-700 bg-transparent rounded-xl p-2 font-medium text-gray-400";
@@ -470,10 +495,7 @@
         }
 
         function mulaiProsesLoading() {
-            const txtStatus = document.getElementById('struk-status-text');
-            const iconStatus = document.getElementById('struk-status-icon');
-            const btnUtama = document.getElementById('btn-pay-final');
-
+            const txtStatus = document.getElementById('struk-status-text'), iconStatus = document.getElementById('struk-status-icon'), btnUtama = document.getElementById('btn-pay-final');
             txtStatus.innerText = "Memproses...";
             txtStatus.className = "font-medium text-amber-500 animate-pulse";
             iconStatus.className = "w-4 h-4 rounded-full bg-amber-500 flex items-center justify-center text-[10px] text-[#1e2429] font-bold animate-spin";
@@ -481,19 +503,13 @@
             btnUtama.disabled = true;
             btnUtama.innerHTML = "<span>Memproses Transaksi...</span>";
             btnUtama.className = "w-full bg-gray-700 text-gray-400 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center cursor-not-allowed";
-
             setTimeout(eksekusiSuksesAkhir, 2000);
         }
 
         function eksekusiSuksesAkhir() {
-            const txtStatus = document.getElementById('struk-status-text');
-            const iconStatus = document.getElementById('struk-status-icon');
-            const btnUtama = document.getElementById('btn-pay-final');
-
-            // Set persis seperti gambar GoPay yang sukses (Selesai ✓)
+            const txtStatus = document.getElementById('struk-status-text'), iconStatus = document.getElementById('struk-status-icon'), btnUtama = document.getElementById('btn-pay-final');
             txtStatus.innerText = "Selesai";
             txtStatus.className = "font-medium text-green-500";
-            
             iconStatus.innerText = "✓";
             iconStatus.className = "w-4 h-4 rounded-full bg-green-500 flex items-center justify-center text-[10px] text-[#1e2429] font-bold shadow-sm";
 
@@ -503,14 +519,13 @@
 
             btnUtama.disabled = false;
             btnUtama.innerText = "Tutup";
-            btnUtama.className = "w-full bg-gray-800 text-white font-bold py-2.5 rounded-xl shadow-md hover:bg-gray-700 transition text-xs tracking-wide";
+            btnUtama.className = "w-full bg-gray-800 text-white font-bold py-2.5 rounded-xl shadow-md hover:bg-gray-700 transition text-xs";
             btnUtama.setAttribute('onclick', 'resetAplikasiAkhir()');
         }
 
         function resetAplikasiAkhir() {
             keranjang = {};
-            document.getElementById('p1').innerText = '0';
-            document.getElementById('p2').innerText = '0';
+            document.querySelectorAll('#product-grid span[id^="p"]').forEach(el => el.innerText = '0');
             document.getElementById('discount-section').classList.remove('hidden');
             perbaruiTampilanKeranjangGoFood();
             returningToCatalog();
