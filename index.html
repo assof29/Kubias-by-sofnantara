@@ -97,7 +97,8 @@
             &copy; 2026 Kubias Bakery. Boutique Collection.
         </div>
     </div>
-    <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-dark/60 backdrop-blur-sm z-40 hidden"></div>
+    
+    <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/60 backdrop-blur-md z-40 opacity-0 pointer-events-none transition-all duration-500 ease-in-out"></div>
 
     <main id="tab-etalase" class="flex-1 p-6 max-w-5xl w-full mx-auto overflow-y-auto no-scrollbar pb-32" onclick="tutupPilihanNegaraMousse(event)">
         <div class="flex items-center justify-between mb-8">
@@ -118,7 +119,6 @@
                     {id: 'p8', name: 'Korean Bento Cake', country: 'korea', price: 50000, desc: 'Minimalist aesthetic custom cake.', flag: '🇰🇷'},
                     {id: 'p9', name: 'Garlic Cheese Bread', country: 'korea', price: 32000, desc: 'Cream cheese filled savory bread.', flag: '🇰🇷'},
                     {id: 'p10', name: 'Croffle Maple', country: 'korea', price: 28000, desc: 'Iconic crunchy waffle croissant.', flag: '🇰🇷'}
-                    // ... up to 25. Adding 15 more generic placeholders for space
                 ];
 
                 for(let i=11; i<=25; i++) {
@@ -256,7 +256,6 @@
         let subtotalMurni = 0;
         let nilaiPotongan = 0;
 
-        // ANIMASI SPLASH (Kilasan Instan)
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
@@ -266,11 +265,22 @@
             }, 800); 
         });
 
-        // UI HELPERS
+        // FUNGSI SIDEBAR DENGAN TRANSISE BLUR DAN EDIT BACKDROP
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('-translate-x-full');
-            document.getElementById('sidebarOverlay').classList.toggle('hidden');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('-translate-x-full');
+            
+            if (sidebar.classList.contains('-translate-x-full')) {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                overlay.classList.remove('opacity-100');
+            } else {
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100');
+            }
         }
+
         function tampilkanPilihanNegara() { document.getElementById('country-options').classList.remove('hidden'); }
         function tutupPilihanNegaraMousse(event) { if (!document.getElementById('header-search-bar').contains(event.target)) { document.getElementById('country-options').classList.add('hidden'); } }
 
@@ -328,7 +338,6 @@
             }
         }
 
-        // PAYMENT FLOW
         function pindahKeTabPembayaran() {
             document.getElementById('brand-logo').classList.add('hidden');
             document.getElementById('header-search-bar').classList.add('hidden');
