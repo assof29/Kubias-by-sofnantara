@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -76,6 +76,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div data-name="pandan roll cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
                     <div>
                         <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Pandan Roll ]</div>
@@ -88,36 +89,6 @@
                             <button onclick="ubahJumlah('p2', -1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
                             <span id="p2" class="mx-3 text-sm font-bold text-emerald-900">0</span>
                             <button onclick="ubahJumlah('p2', 1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
-                        </div>
-                    </div>
-                </div>
-                <div data-name="chocolate fudge cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Chocolate Fudge ]</div>
-                        <h3 class="font-bold text-gray-800 text-base">Chocolate Fudge Cake</h3>
-                        <p class="text-xs text-gray-500 mt-1">Kue cokelat pekat berlapis fudge yang lumer di lidah.</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
-                        <span class="font-bold text-emerald-600 text-sm">Rp 42.000</span>
-                        <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
-                            <button onclick="ubahJumlah('p3', -1, 'Chocolate Fudge Cake', 42000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
-                            <span id="p3" class="mx-3 text-sm font-bold text-emerald-900">0</span>
-                            <button onclick="ubahJumlah('p3', 1, 'Chocolate Fudge Cake', 42000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
-                        </div>
-                    </div>
-                </div>
-                <div data-name="strawberry cheesecake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Cheesecake ]</div>
-                        <h3 class="font-bold text-gray-800 text-base">Strawberry Cheesecake</h3>
-                        <p class="text-xs text-gray-500 mt-1">Kue keju panggang lembut dengan selai stroberi segar.</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
-                        <span class="font-bold text-emerald-600 text-sm">Rp 48.000</span>
-                        <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
-                            <button onclick="ubahJumlah('p4', -1, 'Strawberry Cheesecake', 48000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
-                            <span id="p4" class="mx-3 text-sm font-bold text-emerald-900">0</span>
-                            <button onclick="ubahJumlah('p4', 1, 'Strawberry Cheesecake', 48000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
                         </div>
                     </div>
                 </div>
@@ -145,7 +116,7 @@
                         <span class="text-sm font-medium text-gray-500">Subtotal:</span>
                         <span class="text-xl font-bold text-emerald-700" id="total-price">Rp 0</span>
                     </div>
-                    <button onclick="pindahKeTabPembayaran()" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-700 transition flex items-center justify-center space-x-2 text-sm">
+                    <button onclick="pindahKeTabPembayaran()" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-700 transition flex items-center justify-center text-sm">
                         <span>Lanjut ke Pembayaran</span>
                     </button>
                 </div>
@@ -153,63 +124,79 @@
         </div>
     </main>
 
-    <main id="tab-pembayaran" class="flex-1 p-4 max-w-xl w-full mx-auto hidden">
+    <main id="tab-pembayaran" class="flex-1 p-4 max-w-md w-full mx-auto hidden">
         <button id="btn-kembali" onclick="kembaliKeEtalase()" class="text-emerald-700 font-semibold flex items-center space-x-1 mb-4 hover:underline text-sm">
             <span>← Kembali Ubah Pesanan</span>
         </button>
 
-        <div class="bg-white rounded-3xl border border-emerald-100 shadow-xl overflow-hidden p-6 space-y-6 relative">
-            <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-emerald-400 to-emerald-600"></div>
-
-            <div class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4">
-                <div>
-                    <h2 class="text-xl font-bold text-emerald-700 tracking-wide">STRUK PEMBELIAN ONLINE</h2>
-                    <p class="text-xs text-gray-400 mt-0.5" id="struk-id">Nota: #KB-PENDING</p>
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-6 space-y-6 relative">
+            
+            <div class="flex flex-col items-center border-b border-gray-100 pb-4">
+                <div id="status-icon" class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl font-bold mb-2">
+                    ⏳
                 </div>
-                <div id="payment-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 flex items-center space-x-1">
-                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                    <span>BELUM BAYAR</span>
+                <h2 class="text-base font-bold text-gray-800 tracking-wide">BUKTI TRANSFER DIGITAL</h2>
+                <div id="payment-badge" class="mt-1 text-xs font-bold text-amber-600 uppercase bg-amber-50 px-2.5 py-0.5 rounded">
+                    PROSES PENDING
                 </div>
             </div>
 
-            <div>
-                <span class="text-xs uppercase font-bold text-gray-400 tracking-wider block mb-2">Daftar Kue:</span>
-                <div id="checkout-invoice-list" class="space-y-2 bg-gray-50 p-3.5 rounded-2xl border border-gray-100 text-sm"></div>
+            <div class="space-y-3 text-xs">
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Waktu Transaksi</span>
+                    <span class="font-medium text-gray-800 text-right" id="struk-waktu">-</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Nomor Referensi</span>
+                    <span class="font-mono font-bold text-gray-800 text-right" id="struk-ref">-</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Jenis Transfer</span>
+                    <span class="font-medium text-gray-800 text-right" id="struk-metode">QRIS DIGITAL</span>
+                </div>
+                <hr class="border-gray-100">
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Penerima</span>
+                    <span class="font-bold text-emerald-700 text-right">KUBIAS BAKERY OFFICIAL</span>
+                </div>
+                
+                <div class="bg-gray-50 p-3 rounded-xl space-y-1.5 border border-gray-100">
+                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Rincian Item:</span>
+                    <div id="checkout-invoice-list" class="space-y-1 text-gray-600">
+                        </div>
+                </div>
+
+                <hr class="border-gray-100">
+                <div class="flex justify-between items-center pt-1">
+                    <span class="text-sm font-bold text-gray-800">Jumlah Transfer</span>
+                    <span class="text-lg font-bold text-emerald-600" id="checkout-total-price">Rp 0</span>
+                </div>
             </div>
 
-            <div class="flex justify-between items-center bg-emerald-50 border border-emerald-100 p-4 rounded-2xl">
-                <span class="text-sm font-bold text-emerald-950">Total Tagihan</span>
-                <span class="text-2xl font-bold text-emerald-700" id="checkout-total-price">Rp 0</span>
-            </div>
-
-            <div id="payment-options-container">
-                <label class="text-xs uppercase font-bold text-gray-400 tracking-wider block mb-2">Metode Pembayaran:</label>
-                <div class="grid grid-cols-2 gap-3">
-                    <label id="label-qris" class="border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer text-center">
+            <div id="payment-options-container" class="space-y-3 pt-2">
+                <div class="grid grid-cols-2 gap-2">
+                    <label id="label-qris" class="border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center">
                         <input type="radio" name="payment-option" value="qris" checked class="hidden" onclick="pilihMetodeVisual('qris')">
-                        <span class="text-xl mb-1">📱</span>
-                        <span class="font-bold text-gray-800 text-xs">QRIS / E-Wallet</span>
+                        <span class="text-xs font-bold text-gray-800">QRIS / E-Wallet</span>
                     </label>
-                    <label id="label-tf" class="border-2 border-gray-100 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer text-center">
+                    <label id="label-tf" class="border-2 border-gray-100 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center">
                         <input type="radio" name="payment-option" value="transfer" class="hidden" onclick="pilihMetodeVisual('transfer')">
-                        <span class="text-xl mb-1">🏦</span>
-                        <span class="font-bold text-gray-800 text-xs">Transfer Bank</span>
+                        <span class="text-xs font-bold text-gray-800">Transfer Bank</span>
                     </label>
                 </div>
-                <div id="payment-instruction" class="mt-3 text-xs bg-gray-50 p-3 rounded-xl border border-gray-200 text-gray-600">
-                    Sistem akan memunculkan barcode QRIS setelah tombol konfirmasi ditekan.
+                <div id="payment-instruction" class="text-[11px] bg-amber-50 text-amber-800 p-2.5 rounded-xl border border-amber-200">
+                    Tekan tombol di bawah untuk menyimulasikan pembayaran instan QRIS.
                 </div>
             </div>
 
-            <button id="btn-pay-final" onclick="prosesBayarFinal()" class="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-2xl shadow-lg hover:bg-emerald-700 transition tracking-wide text-sm">
-                Konfirmasi & Bayar Sekarang
+            <button id="btn-pay-final" onclick="prosesBayarFinal()" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-700 transition text-xs tracking-wide">
+                Konfirmasi & Ambil Bukti Transfer
             </button>
         </div>
     </main>
 
     <script>
         let keranjang = {};
-        let notaSekarang = "";
 
         function cariKue() {
             const kataKunci = document.getElementById('search-input').value.toLowerCase();
@@ -284,17 +271,27 @@
                 return;
             }
 
-            // Generate nomor nota acak unik
-            notaSekarang = "KB-" + Math.floor(100000 + Math.random() * 900000);
-            document.getElementById('struk-id').innerText = "Nota: #" + notaSekarang;
+            // Atur Waktu & Kode Referensi otomatis ala Bank terupdate
+            const sekarang = new Date();
+            const formatWaktu = sekarang.toLocaleDateString('id-ID', { year: 'numeric', month: '2-digit', day: '2-digit' }) + " " + sekarang.toLocaleTimeString('id-ID');
+            document.getElementById('struk-waktu').innerText = formatWaktu;
+            
+            const kodeRef = "TRF" + sekarang.getFullYear() + String(sekarang.getMonth()+1).padStart(2,'0') + String(sekarang.getDate()).padStart(2,'0') + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('struk-ref').innerText = kodeRef;
 
-            document.getElementById('payment-badge').className = "px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 flex items-center space-x-1";
-            document.getElementById('payment-badge').innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span><span>PENDING</span>';
+            // Kategori Tampilan Default Awal
+            document.getElementById('status-icon').className = "w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl font-bold mb-2";
+            document.getElementById('status-icon').innerText = "⏳";
+            document.getElementById('payment-badge').className = "mt-1 text-xs font-bold text-amber-600 uppercase bg-amber-50 px-2.5 py-0.5 rounded";
+            document.getElementById('payment-badge').innerText = "PROSES PENDING";
+            
             document.getElementById('payment-options-container').classList.remove('hidden');
             document.getElementById('btn-kembali').classList.remove('hidden');
-            document.getElementById('btn-pay-final').innerText = "Konfirmasi & Bayar Sekarang";
+            document.getElementById('btn-pay-final').innerText = "Konfirmasi & Ambil Bukti Transfer";
+            document.getElementById('btn-pay-final').className = "w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-700 transition text-xs tracking-wide";
             document.getElementById('btn-pay-final').setAttribute('onclick', 'prosesBayarFinal()');
 
+            // Cetak Baris Invoice Struk
             const invoiceContainer = document.getElementById('checkout-invoice-list');
             invoiceContainer.innerHTML = '';
             let totalHarga = 0;
@@ -304,8 +301,8 @@
                 const subTotal = item.jumlah * item.harga;
                 totalHarga += subTotal;
                 const row = document.createElement('div');
-                row.className = 'flex justify-between py-1 border-b border-gray-100 last:border-0';
-                row.innerHTML = `<span>${item.nama} <span class="text-emerald-600 font-bold">x${item.jumlah}</span></span> <span class="font-semibold text-gray-700">Rp ${subTotal.toLocaleString('id-ID')}</span>`;
+                row.className = 'flex justify-between py-0.5 text-gray-700';
+                row.innerHTML = `<span>${item.nama} (x${item.jumlah})</span> <span class="font-medium text-gray-900">Rp ${subTotal.toLocaleString('id-ID')}</span>`;
                 invoiceContainer.appendChild(row);
             });
 
@@ -323,59 +320,49 @@
             const labelQris = document.getElementById('label-qris');
             const labelTf = document.getElementById('label-tf');
             const instruksi = document.getElementById('payment-instruction');
+            const teksMetode = document.getElementById('struk-metode');
 
             if (metode === 'qris') {
-                labelQris.className = "border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer text-center";
-                labelTf.className = "border-2 border-gray-100 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer text-center";
-                instruksi.innerText = "Sistem akan memunculkan barcode QRIS setelah tombol konfirmasi ditekan.";
+                labelQris.className = "border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center";
+                labelTf.className = "border-2 border-gray-100 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center";
+                instruksi.className = "text-virtual text-[11px] bg-amber-50 text-amber-800 p-2.5 rounded-xl border border-amber-200";
+                instruksi.innerText = "Tekan tombol di bawah untuk menyimulasikan pembayaran instan QRIS.";
+                teksMetode.innerText = "QRIS DIGITAL";
             } else {
-                labelTf.className = "border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer text-center";
-                labelQris.className = "border-2 border-gray-100 rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer text-center";
-                instruksi.innerText = "Transfer manual ke Rekening BCA: 8720-xxxx-xxxx a/n Kubias Bakery.";
+                labelTf.className = "border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center";
+                labelQris.className = "border-2 border-gray-100 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center";
+                instruksi.className = "text-[11px] bg-emerald-50 text-emerald-800 p-2.5 rounded-xl border border-emerald-200";
+                instruksi.innerText = "Transfer manual sukses disimulasikan ke Rekening BCA: 8720-xxxx-xxxx a/n Kubias.";
+                teksMetode.innerText = "TRANSFER BANK (BCA)";
             }
         }
 
+        // AKSI MELEKATKAN TANDA TRANSAKSI BERHASIL BERWARNA HIJAU KHAS BANK
         function prosesBayarFinal() {
-            const badge = document.getElementById('payment-badge');
-            badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 flex items-center space-x-1";
-            badge.innerHTML = '<span>✅ LUNAS</span>';
+            // 1. Ganti Indikator Utama menjadi Berhasil (Hijau M-Banking)
+            const icon = document.getElementById('status-icon');
+            icon.className = "w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl font-bold mb-2 animate-bounce";
+            icon.innerText = "✓";
 
+            const badge = document.getElementById('payment-badge');
+            badge.className = "mt-1 text-xs font-bold text-green-700 uppercase bg-green-50 px-2.5 py-0.5 rounded";
+            badge.innerText = "TRANSAKSI BERHASIL";
+
+            // 2. Kunci layar, sembunyikan area interaksi input bank & tombol kembali
             document.getElementById('payment-options-container').classList.add('hidden');
             document.getElementById('btn-kembali').classList.add('hidden');
 
+            // 3. Modifikasi Tombol untuk Selesai/Clear Data kembali ke awal
             const btnUtama = document.getElementById('btn-pay-final');
-            btnUtama.innerText = "Kirim Struk ke WhatsApp Admin";
-            btnUtama.className = "w-full bg-green-600 text-white font-bold py-3.5 rounded-2xl shadow-lg hover:bg-green-700 transition tracking-wide text-sm";
-            btnUtama.setAttribute('onclick', 'kirimWhatsApp()');
+            btnUtama.innerText = "Transaksi Selesai & Reset Toko";
+            btnUtama.className = "w-full bg-gray-800 text-white font-bold py-3 rounded-xl shadow-md hover:bg-gray-900 transition text-xs tracking-wide";
+            btnUtama.setAttribute('onclick', 'resetAplikasiAkhir()');
         }
 
-        function kirimWhatsApp() {
-            const metodeTerpilih = document.querySelector('input[name="payment-option"]:checked').value.toUpperCase();
-            let totalHarga = document.getElementById('checkout-total-price').innerText;
-            
-            // Susun teks kiriman WA
-            let pesan = `Halo Kubias Bakery, saya ingin mengonfirmasi pesanan.\n\n`;
-            pesan += `🧾 *NO. NOTA:* #${notaSekarang}\n`;
-            pesan += `📌 *STATUS:* LUNAS\n`;
-            pesan += `💳 *METODE:* ${metodeTerpilih}\n\n`;
-            pesan += `📦 *DAFTAR KUE:*\n`;
-            
-            Object.keys(keranjang).forEach(kunci => {
-                const item = keranjang[kunci];
-                pesan += `- ${item.nama} (${item.jumlah}x)\n`;
-            });
-            
-            pesan += `\n💰 *TOTAL TAGIHAN:* ${totalHarga}\n\nMohon segera diproses ya, terima kasih!`;
-            
-            // Encode teks ke format URL
-            const urlWhatsApp = `https://wa.me/6281234567890?text=${encodeURIComponent(pesan)}`;
-            
-            // Buka tab WhatsApp baru
-            window.open(urlWhatsApp, '_blank');
-            
-            // Reset aplikasi kembali ke awal
+        function resetAplikasiAkhir() {
             keranjang = {};
-            document.querySelectorAll('.product-card span[id]').forEach(el => el.innerText = '0');
+            document.getElementById('p1').innerText = '0';
+            document.getElementById('p2').innerText = '0';
             perbaruiTampilanKeranjang();
             kembaliKeEtalase();
         }
