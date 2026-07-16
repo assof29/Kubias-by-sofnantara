@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+ <! <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -91,6 +91,13 @@
                             </span>
                             <span class="text-sm font-medium transition-colors group-hover:text-gold">@kubias.bakery</span>
                         </a>
+                        <div class="flex items-start space-x-3 pt-2">
+                            <span class="w-9 h-9 flex items-center justify-center bg-matcha-light rounded-lg text-base flex-shrink-0">📍</span>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] font-bold text-gold uppercase tracking-wider">Our Store</span>
+                                <span class="text-sm font-medium text-gray-200 leading-tight">Jl.sederhana no.9</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -219,7 +226,7 @@
                     <span class="text-gray-500">Metode pembayaran</span>
                     <div class="flex items-center space-x-2 text-gray-200">
                         <span id="struk-metode" class="font-medium">QRIS (GoPay)</span>
-                        <div class="w-5 h-5 rounded bg-cyan-500 flex items-center justify-center text-[10px] text-white"> </div>
+                        <div class="w-5 h-5 rounded bg-cyan-500 flex items-center justify-center text-[10px] text-white">💳</div>
                     </div>
                 </div>
                 <div class="flex justify-between text-gray-300"><span>Waktu</span><span id="struk-waktu">-</span></div>
@@ -400,7 +407,6 @@
             document.getElementById('tab-etalase').classList.remove('hidden');
         }
 
-        // DIUBAH: Fungsi pengantaran sekarang juga menampilkan/menyembunyikan kolom alamat pengisian
         function pilihPengantaran(opsi) {
             tipePengantaran = opsi;
             const btnAnda = document.getElementById('tab-kirim-anda');
@@ -412,12 +418,12 @@
                 btnAnda.className = "py-3 text-xs font-bold rounded-xl transition-all bg-matcha-light text-white shadow-md";
                 btnToko.className = "py-3 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-400 hover:text-gray-200";
                 strukPengantaran.innerText = "Kirim ke Tempat Anda";
-                containerAlamat.classList.remove('hidden'); // Menampilkan form alamat
+                containerAlamat.classList.remove('hidden');
             } else {
                 btnToko.className = "py-3 text-xs font-bold rounded-xl transition-all bg-matcha-light text-white shadow-md";
                 btnAnda.className = "py-3 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-400 hover:text-gray-200";
                 strukPengantaran.innerText = "Ambil di Toko Kue";
-                containerAlamat.classList.add('hidden'); // Menyembunyikan form alamat
+                containerAlamat.classList.add('hidden');
             }
         }
 
@@ -465,7 +471,6 @@
         }
 
         function mulaiProsesLoading() {
-            // Validasi alamat jika opsi Tempat Anda dipilih
             if (tipePengantaran === 'anda') {
                 const alamatInput = document.getElementById('input-alamat').value.trim();
                 if (alamatInput === "") {
