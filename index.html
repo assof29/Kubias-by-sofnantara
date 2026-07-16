@@ -149,7 +149,7 @@
                             <div class="flex items-center bg-gray-100 rounded-2xl p-1">
                                 <button onclick="ubahJumlah('${item.id}', -1, '${item.name}', ${item.price})" class="w-8 h-8 flex items-center justify-center bg-white rounded-xl text-matcha font-bold shadow-sm active:scale-90 transition-transform">-</button>
                                 <span id="${item.id}" class="mx-3 text-sm font-bold text-matcha">0</span>
-                                <button onclick="ubahJumlah('${item.id}', 1, '${item.name}', ${item.price})" class="w-8 h-8 flex items-center justify-center bg-white rounded-xl text-matcha font-bold shadow-sm active:scale-90 transition-transform">+</button>
+                                <button onclick="ubahJumlah('${item.id}', 1, '${item.name}', ${price})" class="w-8 h-8 flex items-center justify-center bg-white rounded-xl text-matcha font-bold shadow-sm active:scale-90 transition-transform">+</button>
                             </div>
                         </div>
                     </div>
@@ -215,13 +215,13 @@
                 </div>
 
                 <div id="discount-section">
-                    <button onclick="toggleVoucherModal()" class="w-full flex items-center justify-between font-bold text-matcha-light text-xs bg-emerald-900/20 px-4 py-3 rounded-2xl hover:bg-emerald-900/40 transition">
+                    <button onclick="toggleVoucherModal()" class="w-full flex items-center justify-between font-bold text-emerald-400 text-xs bg-emerald-950/40 px-4 py-3 rounded-2xl hover:bg-emerald-900/40 transition border border-emerald-900/30">
                         <span id="selected-voucher-text">🎟️ Use Promo / Voucher</span>
                         <span>></span>
                     </button>
                     <div id="voucher-list" class="hidden mt-3 space-y-2">
                         <div onclick="applyVoucher('persen', 10, 'Matcha Flash 10%')" class="bg-[#252C32] p-4 rounded-xl cursor-pointer border border-gray-800 hover:border-matcha-light transition">
-                            <p class="font-bold text-gray-200 text-xs">🎟️ Matcha Flash 10%</p>
+                            <p class="font-bold text-emerald-400 text-xs">🎟️ Matcha Flash 10%</p>
                         </div>
                     </div>
                 </div>
@@ -230,9 +230,10 @@
 
                 <div class="flex justify-between text-gray-400"><span>Jumlah</span><span id="checkout-subtotal-price">Rp 0</span></div>
                 <div id="row-potongan" class="justify-between text-rose-500 hidden"><span>Potongan Diskon</span><span id="checkout-discount-price">-Rp 0</span></div>
+                
                 <div class="flex justify-between text-gray-400">
                     <span>Biaya admin</span>
-                    <span><del class="opacity-40">Rp2.000</del> <span class="text-green-500 ml-1">Gratis!</span></span>
+                    <span class="text-gray-200 font-medium">Rp1.000</span>
                 </div>
 
                 <hr class="border-gray-800">
@@ -264,6 +265,7 @@
         let subtotalMurni = 0;
         let nilaiPotongan = 0;
         let vendorAktif = 'GoPay';
+        const BIAYA_ADMIN = 1000;
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -364,7 +366,7 @@
             });
 
             document.getElementById('checkout-subtotal-price').innerText = `Rp${subtotalMurni.toLocaleString()}`;
-            document.getElementById('checkout-total-price').innerText = `Rp${subtotalMurni.toLocaleString()}`;
+            document.getElementById('checkout-total-price').innerText = `Rp${(subtotalMurni + BIAYA_ADMIN).toLocaleString()}`;
             
             document.getElementById('tab-etalase').classList.add('hidden');
             document.getElementById('tab-pembayaran').classList.remove('hidden');
@@ -385,11 +387,11 @@
             const row = document.getElementById('row-potongan');
             row.className = "flex justify-between text-rose-500 font-medium";
             document.getElementById('checkout-discount-price').innerText = `-Rp${nilaiPotongan.toLocaleString()}`;
-            document.getElementById('checkout-total-price').innerText = `Rp${(subtotalMurni - nilaiPotongan).toLocaleString()}`;
+            
+            document.getElementById('checkout-total-price').innerText = `Rp${(subtotalMurni - nilaiPotongan + BIAYA_ADMIN).toLocaleString()}`;
             toggleVoucherModal();
         }
 
-        // UPDATE: Text dinonaktifkan/diubah menjadi QRIS
         function pilihMetodeVisual(m) {
             const isQ = m === 'qris';
             const subMenu = document.getElementById('ewallet-sub-options');
