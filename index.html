@@ -14,11 +14,11 @@
 </head>
 <body class="bg-emerald-50 text-gray-800 min-h-screen flex flex-col overflow-hidden">
 
-    <div id="splash-screen" class="fixed inset-0 bg-emerald-900 z-50 flex flex-col items-center justify-center transition-all duration-300 ease-in-out">
-        <div class="text-center space-y-3 animate-pulse">
-            <div class="text-5xl">🍞</div>
-            <h1 class="text-white font-bold text-xl tracking-wider">Kubias Bakery</h1>
-            <p class="text-emerald-300 text-[10px] font-semibold uppercase tracking-widest bg-emerald-800/60 px-3 py-1 rounded-full border border-emerald-700/50">
+    <div id="splash-screen" class="fixed inset-0 bg-emerald-900 z-50 flex flex-col items-center justify-center transition-all duration-150 ease-out">
+        <div class="text-center space-y-2 scale-95 transition-transform duration-200">
+            <div class="text-4xl">🍞</div>
+            <h1 class="text-white font-bold text-lg tracking-wider">Kubias Bakery</h1>
+            <p class="text-emerald-300 text-[9px] font-semibold uppercase tracking-widest bg-emerald-800/60 px-2.5 py-0.5 rounded-full border border-emerald-700/50">
                 Project Created by SofNantara
             </p>
         </div>
@@ -135,7 +135,7 @@
     </main>
 
     <main id="tab-pembayaran" class="flex-1 p-4 max-w-md w-full mx-auto hidden">
-        <button id="btn-kembali" onclick="kembaliKeEtalase()" class="text-emerald-700 font-semibold flex items-center space-x-1 mb-4 hover:underline text-sm">
+        <button id="btn-kembali" onclick="returningToCatalog()" class="text-emerald-700 font-semibold flex items-center space-x-1 mb-4 hover:underline text-sm">
             <span>← Kembali Ubah Pesanan</span>
         </button>
 
@@ -206,15 +206,15 @@
     <script>
         let keranjang = {};
 
-        // REVISI: Mengubah Durasi Menjadi Lebih Cepat (1.2 detik saja)
+        // REVISI UTAMA: Splash screen berdurasi kilasan instan saja (600ms muncul + 150ms transisi)
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
-                splash.classList.add('opacity-0', '-translate-y-full');
+                splash.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
                 document.body.classList.remove('overflow-hidden');
                 
-                setTimeout(() => splash.remove(), 300);
-            }, 1200); // Dipercepat dari 2.5 detik menjadi 1.2 detik
+                setTimeout(() => splash.remove(), 150);
+            }, 600); 
         });
 
         function cariKue() {
@@ -331,7 +331,7 @@
             document.getElementById('tab-pembayaran').classList.remove('hidden');
         }
 
-        function kembaliKeEtalase() {
+        function returningToCatalog() {
             document.getElementById('tab-pembayaran').classList.add('hidden');
             document.getElementById('tab-etalase').classList.remove('hidden');
         }
@@ -367,7 +367,6 @@
             btnUtama.innerHTML = "<span>Memproses Pembayaran...</span>";
             btnUtama.className = "w-full bg-amber-500 text-white font-bold py-3 rounded-xl text-xs tracking-wide flex items-center justify-center cursor-not-allowed";
 
-            // Proses simulasi loading bank dipertahankan 2 detik agar efek perputaran jam pasir tetap terasa nyata
             setTimeout(eksekusiSuksesAkhir, 2000);
         }
 
@@ -396,7 +395,7 @@
             document.getElementById('p1').innerText = '0';
             document.getElementById('p2').innerText = '0';
             perbaruiTampilanKeranjang();
-            kembaliKeEtalase();
+            returningToCatalog();
         }
     </script>
 </body>
