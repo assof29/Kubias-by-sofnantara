@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -58,7 +58,7 @@
         <div class="md:col-span-2">
             <h2 class="text-lg font-bold text-emerald-800 mb-4 flex items-center">
                 <span class="bg-emerald-600 w-2 h-5 rounded-full mr-2 inline-block"></span>
-                Pilihan Kue Kubias Bakery
+                Etalase Kue Segar
             </h2>
             <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div data-name="matcha mousse cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
@@ -93,13 +93,13 @@
                     </div>
                 </div>
             </div>
-            <p id="not-found-msg" class="text-center text-gray-400 py-10 hidden">Waduh maaf kita belum menyediakan kue yang kamu cari...</p>
+            <p id="not-found-msg" class="text-center text-gray-400 py-10 hidden">Kue yang kamu cari tidak ditemukan...</p>
         </div>
 
         <div class="space-y-4">
             <h2 class="text-lg font-bold text-emerald-800 mb-2 flex items-center">
                 <span class="bg-emerald-600 w-2 h-5 rounded-full mr-2 inline-block"></span>
-                Keranjang
+                Keranjang Belanja
             </h2>
             <div class="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm flex flex-col justify-between min-h-[300px]">
                 <div>
@@ -135,7 +135,7 @@
                 <div id="status-icon" class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl font-bold mb-2">
                     ⏳
                 </div>
-                <h2 class="text-base font-bold text-gray-800 tracking-wide">BUKTI PEMBAYARAN</h2>
+                <h2 class="text-base font-bold text-gray-800 tracking-wide">BUKTI TRANSFER DIGITAL</h2>
                 <div id="payment-badge" class="mt-1 text-xs font-bold text-amber-600 uppercase bg-amber-50 px-2.5 py-0.5 rounded">
                     PROSES PENDING
                 </div>
@@ -151,7 +151,7 @@
                     <span class="font-mono font-bold text-gray-800 text-right" id="struk-ref">-</span>
                 </div>
                 <div class="flex justify-between">
-                    <span class="text-gray-400">Jenis Pembayaran</span>
+                    <span class="text-gray-400">Jenis Transfer</span>
                     <span class="font-medium text-gray-800 text-right" id="struk-metode">QRIS DIGITAL</span>
                 </div>
                 <hr class="border-gray-100">
@@ -168,7 +168,7 @@
 
                 <hr class="border-gray-100">
                 <div class="flex justify-between items-center pt-1">
-                    <span class="text-sm font-bold text-gray-800">Jumlah Transaksi</span>
+                    <span class="text-sm font-bold text-gray-800">Jumlah Transfer</span>
                     <span class="text-lg font-bold text-emerald-600" id="checkout-total-price">Rp 0</span>
                 </div>
             </div>
@@ -189,8 +189,8 @@
                 </div>
             </div>
 
-            <button id="btn-pay-final" onclick="prosesBayarFinal()" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-700 transition text-xs tracking-wide">
-                Konfirmasi & Ambil Bukti Pembayaran
+            <button id="btn-pay-final" onclick="mulaiProsesLoading()" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-700 transition text-xs tracking-wide flex items-center justify-center space-x-2">
+                <span>Konfirmasi & Ambil Bukti Transfer</span>
             </button>
         </div>
     </main>
@@ -271,7 +271,6 @@
                 return;
             }
 
-            // Atur Waktu & Kode Referensi otomatis ala Bank terupdate
             const sekarang = new Date();
             const formatWaktu = sekarang.toLocaleDateString('id-ID', { year: 'numeric', month: '2-digit', day: '2-digit' }) + " " + sekarang.toLocaleTimeString('id-ID');
             document.getElementById('struk-waktu').innerText = formatWaktu;
@@ -279,19 +278,22 @@
             const kodeRef = "TRF" + sekarang.getFullYear() + String(sekarang.getMonth()+1).padStart(2,'0') + String(sekarang.getDate()).padStart(2,'0') + Math.floor(1000 + Math.random() * 9000);
             document.getElementById('struk-ref').innerText = kodeRef;
 
-            // Kategori Tampilan Default Awal
-            document.getElementById('status-icon').className = "w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl font-bold mb-2";
-            document.getElementById('status-icon').innerText = "⏳";
+            // Reset UI Awal
+            const icon = document.getElementById('status-icon');
+            icon.className = "w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl font-bold mb-2";
+            icon.innerText = "⏳";
+            
             document.getElementById('payment-badge').className = "mt-1 text-xs font-bold text-amber-600 uppercase bg-amber-50 px-2.5 py-0.5 rounded";
             document.getElementById('payment-badge').innerText = "PROSES PENDING";
             
             document.getElementById('payment-options-container').classList.remove('hidden');
             document.getElementById('btn-kembali').classList.remove('hidden');
-            document.getElementById('btn-pay-final').innerText = "Konfirmasi & Ambil Bukti Transfer";
-            document.getElementById('btn-pay-final').className = "w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-700 transition text-xs tracking-wide";
-            document.getElementById('btn-pay-final').setAttribute('onclick', 'prosesBayarFinal()');
+            
+            const btnUtama = document.getElementById('btn-pay-final');
+            btnUtama.innerHTML = "<span>Konfirmasi & Ambil Bukti Transfer</span>";
+            btnUtama.className = "w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-700 transition text-xs tracking-wide flex items-center justify-center";
+            btnUtama.setAttribute('onclick', 'mulaiProsesLoading()');
 
-            // Cetak Baris Invoice Struk
             const invoiceContainer = document.getElementById('checkout-invoice-list');
             invoiceContainer.innerHTML = '';
             let totalHarga = 0;
@@ -325,35 +327,53 @@
             if (metode === 'qris') {
                 labelQris.className = "border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center";
                 labelTf.className = "border-2 border-gray-100 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center";
-                instruksi.className = "text-virtual text-[11px] bg-amber-50 text-amber-800 p-2.5 rounded-xl border border-amber-200";
                 instruksi.innerText = "Tekan tombol di bawah untuk menyimulasikan pembayaran instan QRIS.";
                 teksMetode.innerText = "QRIS DIGITAL";
             } else {
                 labelTf.className = "border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center";
                 labelQris.className = "border-2 border-gray-100 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center";
-                instruksi.className = "text-[11px] bg-emerald-50 text-emerald-800 p-2.5 rounded-xl border border-emerald-200";
                 instruksi.innerText = "Transfer manual sukses disimulasikan ke Rekening BCA: 8720-xxxx-xxxx a/n Kubias.";
                 teksMetode.innerText = "TRANSFER BANK (BCA)";
             }
         }
 
-        // AKSI MELEKATKAN TANDA TRANSAKSI BERHASIL BERWARNA HIJAU KHAS BANK
-        function prosesBayarFinal() {
-            // 1. Ganti Indikator Utama menjadi Berhasil (Hijau M-Banking)
+        // FUNGSI ANIMASI JAM PASIR BERPUTAR (LOADING SIMULATION)
+        function mulaiProsesLoading() {
             const icon = document.getElementById('status-icon');
-            icon.className = "w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl font-bold mb-2 animate-bounce";
+            const badge = document.getElementById('payment-badge');
+            const btnUtama = document.getElementById('btn-pay-final');
+
+            // 1. Buat jam pasir berputar menggunakan utility class Tailwind 'animate-spin'
+            icon.className = "w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl font-bold mb-2 animate-spin";
+            
+            badge.innerText = "MEMPROSES DATA...";
+            
+            // 2. Kunci tombol utama agar tidak bisa di-klik ganda
+            btnUtama.disabled = true;
+            btnUtama.innerHTML = "<span>Memproses Pembayaran...</span>";
+            btnUtama.className = "w-full bg-amber-500 text-white font-bold py-3 rounded-xl text-xs tracking-wide flex items-center justify-center cursor-not-allowed";
+
+            // 3. Set timer tunggu selama 2000ms (2 Detik) baru panggil hasil sukses akhir
+            setTimeout(eksekusiSuksesAkhir, 2000);
+        }
+
+        function eksekusiSuksesAkhir() {
+            const icon = document.getElementById('status-icon');
+            const badge = document.getElementById('payment-badge');
+            const btnUtama = document.getElementById('btn-pay-final');
+
+            // Hentikan putaran dan ganti ikon centang sukses
+            icon.className = "w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl font-bold mb-2";
             icon.innerText = "✓";
 
-            const badge = document.getElementById('payment-badge');
             badge.className = "mt-1 text-xs font-bold text-green-700 uppercase bg-green-50 px-2.5 py-0.5 rounded";
             badge.innerText = "TRANSAKSI BERHASIL";
 
-            // 2. Kunci layar, sembunyikan area interaksi input bank & tombol kembali
             document.getElementById('payment-options-container').classList.add('hidden');
             document.getElementById('btn-kembali').classList.add('hidden');
 
-            // 3. Modifikasi Tombol untuk Selesai/Clear Data kembali ke awal
-            const btnUtama = document.getElementById('btn-pay-final');
+            // Aktifkan kembali tombol untuk opsi reset toko
+            btnUtama.disabled = false;
             btnUtama.innerText = "Transaksi Selesai & Reset Toko";
             btnUtama.className = "w-full bg-gray-800 text-white font-bold py-3 rounded-xl shadow-md hover:bg-gray-900 transition text-xs tracking-wide";
             btnUtama.setAttribute('onclick', 'resetAplikasiAkhir()');
