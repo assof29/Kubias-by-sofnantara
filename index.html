@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -72,19 +72,18 @@
             </h2>
             
             <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
                 <div data-name="matcha mousse cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
                     <div>
                         <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Matcha Cake ]</div>
-                        <h3 class="font-bold text-gray-800 text-base nama-kue">Matcha Mousse Cake</h3>
+                        <h3 class="font-bold text-gray-800 text-base">Matcha Mousse Cake</h3>
                         <p class="text-xs text-gray-500 mt-1">Kue lembut dengan kombinasi teh hijau asli yang creamy.</p>
                     </div>
                     <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
                         <span class="font-bold text-emerald-600 text-sm">Rp 45.000</span>
                         <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
-                            <button onclick="ubahJumlah('p1', -1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
+                            <button onclick="ubahJumlah('p1', -1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm focus:outline-none">-</button>
                             <span id="p1" class="mx-3 text-sm font-bold text-emerald-900">0</span>
-                            <button onclick="ubahJumlah('p1', 1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
+                            <button onclick="ubahJumlah('p1', 1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm focus:outline-none">+</button>
                         </div>
                     </div>
                 </div>
@@ -92,20 +91,19 @@
                 <div data-name="pandan roll cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
                     <div>
                         <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Pandan Roll ]</div>
-                        <h3 class="font-bold text-gray-800 text-base nama-kue">Pandan Roll Cake</h3>
+                        <h3 class="font-bold text-gray-800 text-base">Pandan Roll Cake</h3>
                         <p class="text-xs text-gray-500 mt-1">Bolu gulung pandan wangi dengan isian krim manis.</p>
                     </div>
                     <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
                         <span class="font-bold text-emerald-600 text-sm">Rp 38.000</span>
                         <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
-                            <button onclick="ubahJumlah('p2', -1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
+                            <button onclick="ubahJumlah('p2', -1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm focus:outline-none">-</button>
                             <span id="p2" class="mx-3 text-sm font-bold text-emerald-900">0</span>
-                            <button onclick="ubahJumlah('p2', 1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
+                            <button onclick="ubahJumlah('p2', 1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm focus:outline-none">+</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <p id="not-found-msg" class="text-center text-gray-400 py-10 hidden">Kue yang kamu cari tidak ditemukan...</p>
         </div>
 
@@ -140,30 +138,37 @@
     </main>
 
 
-    <main id="tab-pembayaran" class="flex-1 p-4 max-w-3xl w-full mx-auto hidden">
+    <main id="tab-pembayaran" class="flex-1 p-4 max-w-2xl w-full mx-auto hidden">
         <button onclick="kembaliKeEtalase()" class="text-emerald-700 font-semibold flex items-center space-x-1 mb-4 hover:underline text-sm focus:outline-none">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            <span>Kembali ke Etalase</span>
+            <span>Kembali Ubah Pesanan</span>
         </button>
 
         <h2 class="text-xl font-bold text-emerald-800 mb-4 flex items-center">
             <span class="bg-emerald-600 w-2 h-6 rounded-full mr-2 inline-block"></span>
-            Metode Pembayaran
+            Konfirmasi & Pembayaran
         </h2>
 
         <div class="bg-white p-6 rounded-2xl border border-emerald-100 shadow-sm space-y-6">
-            <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 flex justify-between items-center">
+            
+            <div>
+                <span class="text-sm font-bold text-gray-700 block mb-2">Ringkasan Invoice:</span>
+                <div id="checkout-invoice-list" class="space-y-2 border border-gray-100 p-3 rounded-xl bg-gray-50/50 max-h-40 overflow-y-auto">
+                    </div>
+            </div>
+
+            <div class="bg-emerald-600 text-white p-4 rounded-xl flex justify-between items-center shadow-lg shadow-emerald-100">
                 <div>
-                    <span class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Total yang harus dibayar</span>
-                    <div class="text-2xl font-bold text-emerald-800 mt-0.5" id="checkout-total-price">Rp 0</div>
+                    <span class="text-xs text-emerald-200 font-bold uppercase tracking-wider">Total Pembayaran</span>
+                    <div class="text-2xl font-bold mt-0.5" id="checkout-total-price">Rp 0</div>
                 </div>
-                <span class="text-xs bg-emerald-600 text-white px-3 py-1 rounded-full font-medium" id="checkout-total-items">0 Kue</span>
+                <span class="text-xs bg-emerald-700 text-emerald-100 px-3 py-1 rounded-full font-medium" id="checkout-total-items">0 Kue</span>
             </div>
 
             <div>
-                <label class="text-sm font-bold text-gray-700 block mb-3">Pilih Opsi Pembayaran:</label>
+                <label class="text-sm font-bold text-gray-700 block mb-3">Pilih Metode Pembayaran:</label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <label id="label-qris" class="border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-4 flex items-center space-x-3 cursor-pointer hover:bg-emerald-50 transition">
+                    <label id="label-qris" class="border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-4 flex items-center space-x-3 cursor-pointer transition">
                         <input type="radio" name="payment-option" value="qris" checked class="hidden" onclick="pilihMetodeVisual('qris')">
                         <span class="text-2xl">📱</span>
                         <div>
@@ -176,13 +181,19 @@
                         <span class="text-2xl">🏦</span>
                         <div>
                             <span class="font-bold text-gray-800 block text-sm">Transfer Bank</span>
-                            <span class="text-xs text-gray-500">Virtual Account BCA, Mandiri, BNI</span>
+                            <span class="text-xs text-gray-500">Virtual Account Mandiri, BCA</span>
                         </div>
                     </label>
                 </div>
             </div>
 
-            <button onclick="prosesBayarFinal()" class="w-full mt-4 bg-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-md hover:bg-emerald-700 transition text-base tracking-wide">
+            <div id="payment-instruction" class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-xs text-emerald-900 space-y-1">
+                <p class="font-bold text-emerald-800 mb-1">📌 Instruksi QRIS:</p>
+                <p>1. Tekan tombol 'Konfirmasi & Bayar Sekarang' di bawah.</p>
+                <p>2. Sistem akan memunculkan kode QRIS toko Kubias otomatis untuk di-scan.</p>
+            </div>
+
+            <button onclick="prosesBayarFinal()" class="w-full bg-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-md hover:bg-emerald-700 transition text-base tracking-wide">
                 Konfirmasi & Bayar Sekarang
             </button>
         </div>
@@ -191,7 +202,6 @@
     <script>
         let keranjang = {};
 
-        // 🔍 FUNGSI FITUR SEARCH BAR (BARU & ACTIVE)
         function cariKue() {
             const kataKunci = document.getElementById('search-input').value.toLowerCase();
             const semuaCardKue = document.querySelectorAll('.product-card');
@@ -200,22 +210,16 @@
 
             semuaCardKue.forEach(card => {
                 const namaKue = card.getAttribute('data-name');
-                
-                // Jika nama kue mengandung kata kunci yang diketik
                 if (namaKue.includes(kataKunci)) {
-                    card.classList.remove('hidden'); // Tampilkan kue
+                    card.classList.remove('hidden');
                     adaKueYangCocok = true;
                 } else {
-                    card.classList.add('hidden'); // Sembunyikan kue
+                    card.classList.add('hidden');
                 }
             });
 
-            // Tampilkan pesan error jika tidak ada kue yang cocok sama sekali
-            if (adaKueYangCocok) {
-                pesanKosong.classList.add('hidden');
-            } else {
-                pesanKosong.classList.remove('hidden');
-            }
+            if (adaKueYangCocok) pesanKosong.classList.add('hidden');
+            else pesanKosong.classList.remove('hidden');
         }
 
         function toggleSidebar() {
@@ -274,16 +278,37 @@
             }
             containerCount.innerText = `${totalKue} Kue`;
             containerTotal.innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
-            
-            document.getElementById('checkout-total-price').innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
-            document.getElementById('checkout-total-items').innerText = `${totalKue} Kue`;
         }
 
+        // FUNGSI PINDAH TAB (DENGAN MENYUSUN LIST INVOICE)
         function pindahKeTabPembayaran() {
             if (Object.keys(keranjang).length === 0) {
-                alert('Keranjang Anda masih kosong. Silakan tambahkan kue terlebih dahulu!');
+                alert('Keranjang Anda masih kosong. Silakan pilih kue terlebih dahulu!');
                 return;
             }
+
+            // Susun list invoice di halaman pembayaran
+            const invoiceContainer = document.getElementById('checkout-invoice-list');
+            invoiceContainer.innerHTML = '';
+            
+            let totalHarga = 0;
+            let totalKue = 0;
+
+            Object.keys(keranjang).forEach(kunci => {
+                const item = keranjang[kunci];
+                const subTotal = item.jumlah * item.harga;
+                totalHarga += subTotal;
+                totalKue += item.jumlah;
+
+                const row = document.createElement('div');
+                row.className = 'flex justify-between text-xs text-gray-600 border-b border-gray-100 pb-1.5';
+                row.innerHTML = `<span>${item.nama} (x${item.jumlah})</span> <span class="font-semibold text-gray-800">Rp ${subTotal.toLocaleString('id-ID')}</span>`;
+                invoiceContainer.appendChild(row);
+            });
+
+            document.getElementById('checkout-total-price').innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
+            document.getElementById('checkout-total-items').innerText = `${totalKue} Kue`;
+
             document.getElementById('tab-etalase').classList.add('hidden');
             document.getElementById('tab-pembayaran').classList.remove('hidden');
             window.scrollTo(0, 0);
@@ -295,22 +320,44 @@
             window.scrollTo(0, 0);
         }
 
+        // MENGUBAH VISUAL DAN INSTRUKSI PEMBAYARAN SECARA DINAMIS
         function pilihMetodeVisual(metode) {
             const labelQris = document.getElementById('label-qris');
             const labelTf = document.getElementById('label-tf');
+            const instruksiBox = document.getElementById('payment-instruction');
 
             if (metode === 'qris') {
                 labelQris.className = "border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-4 flex items-center space-x-3 cursor-pointer transition";
                 labelTf.className = "border-2 border-gray-100 rounded-xl p-4 flex items-center space-x-3 cursor-pointer hover:bg-emerald-50 transition";
+                
+                instruksiBox.innerHTML = `
+                    <p class="font-bold text-emerald-800 mb-1">📌 Instruksi QRIS:</p>
+                    <p>1. Tekan tombol 'Konfirmasi & Bayar Sekarang' di bawah.</p>
+                    <p>2. Sistem akan memunculkan kode QRIS toko Kubias otomatis untuk di-scan.</p>
+                `;
             } else {
                 labelTf.className = "border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-4 flex items-center space-x-3 cursor-pointer transition";
                 labelQris.className = "border-2 border-gray-100 rounded-xl p-4 flex items-center space-x-3 cursor-pointer hover:bg-emerald-50 transition";
+                
+                instruksiBox.innerHTML = `
+                    <p class="font-bold text-emerald-800 mb-1">📌 Instruksi Transfer Bank:</p>
+                    <p>Silakan transfer total tagihan ke rekening berikut:</p>
+                    <p class="font-mono bg-white p-1 rounded border border-emerald-200 inline-block mt-1 text-gray-800 font-bold">BCA: 8720-xxxx-xxxx a/n Kubias Bakery</p>
+                `;
             }
         }
 
+        // PROSES BAYAR AKHIR DAN RESET APLIKASI
         function prosesBayarFinal() {
             const metodeTerpilih = document.querySelector('input[name="payment-option"]:checked').value;
-            alert(`Terima kasih!\nPesanan diproses oleh admin Kubias.\nMetode pembayaran: ${metodeTerpilih.toUpperCase()}\n\nSilakan periksa instruksi pembayaran selanjutnya.`);
+            alert(`Sukses!\nPesanan Anda telah diteruskan ke dapur Kubias.\nMetode: ${metodeTerpilih.toUpperCase()}\n\nSilakan cek status pengiriman secara berkala.`);
+            
+            // Sempurnakan dengan mereset data keranjang setelah beli
+            keranjang = {};
+            document.getElementById('p1').innerText = '0';
+            document.getElementById('p2').innerText = '0';
+            perbaruiTampilanKeranjang();
+            kembaliKeEtalase();
         }
     </script>
 </body>
