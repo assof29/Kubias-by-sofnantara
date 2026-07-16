@@ -1,4 +1,4 @@
-      <!DOCTYPE html>
+       <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -35,10 +35,23 @@
             </div>
         </div>
 
-        <div id="header-search-bar" class="w-48 sm:w-64">
+        <div id="header-search-bar" class="w-48 sm:w-64 relative">
             <div class="relative">
-                <input id="search-input" oninput="cariKue()" type="text" placeholder="Cari kue kesukaanmu..." class="w-full text-sm bg-emerald-50 border border-emerald-200 rounded-full pl-3 pr-8 py-1.5 focus:outline-none focus:border-emerald-500 transition">
+                <input id="search-input" onfocus="tampilkanPilihanNegara()" oninput="cariKue()" type="text" placeholder="Cari kue..." class="w-full text-sm bg-emerald-50 border border-emerald-200 rounded-full pl-3 pr-8 py-1.5 focus:outline-none focus:border-emerald-500 transition">
                 <svg class="w-4 h-4 text-emerald-500 absolute right-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+            
+            <div id="country-options" class="absolute left-0 right-0 mt-2 bg-white border border-emerald-100 rounded-xl shadow-lg p-2 hidden z-50 space-y-1">
+                <p class="text-[10px] text-gray-400 font-bold px-2 uppercase tracking-wider">Cari Asal Negara:</p>
+                <button onclick="filterNegara('semua')" class="w-full text-left text-xs px-2 py-1.5 rounded-lg hover:bg-emerald-50 text-emerald-800 font-medium flex justify-between items-center">
+                    <span>🌍 Semua Negara</span>
+                </button>
+                <button onclick="filterNegara('jepang')" class="w-full text-left text-xs px-2 py-1.5 rounded-lg hover:bg-emerald-50 text-gray-700 flex justify-between items-center">
+                    <span>🇯🇵 Jepang (Matcha)</span>
+                </button>
+                <button onclick="filterNegara('indonesia')" class="w-full text-left text-xs px-2 py-1.5 rounded-lg hover:bg-emerald-50 text-gray-700 flex justify-between items-center">
+                    <span>🇮🇩 Indonesia (Pandan)</span>
+                </button>
             </div>
         </div>
     </header>
@@ -64,16 +77,19 @@
     </div>
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black opacity-40 z-40 hidden"></div>
 
-    <main id="tab-etalase" class="flex-1 p-4 max-w-4xl w-full mx-auto pb-24">
+    <main id="tab-etalase" class="flex-1 p-4 max-w-4xl w-full mx-auto pb-24" onclick="tutupPilihanNegaraMousse(event)">
         <h2 class="text-lg font-bold text-emerald-800 mb-4 flex items-center">
             <span class="bg-emerald-600 w-2 h-5 rounded-full mr-2 inline-block"></span>
             Etalase Kue Segar
         </h2>
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div data-name="matcha mousse cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+            <div data-name="matcha mousse cake" data-country="jepang" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
                 <div>
                     <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Matcha Cake ]</div>
-                    <h3 class="font-bold text-gray-800 text-base">Matcha Mousse Cake</h3>
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-bold text-gray-800 text-base">Matcha Mousse Cake</h3>
+                        <span class="text-[10px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold border border-red-100">🇯🇵 Jepang</span>
+                    </div>
                     <p class="text-xs text-gray-500 mt-1">Kue lembut dengan kombinasi teh hijau asli yang creamy.</p>
                 </div>
                 <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
@@ -86,10 +102,13 @@
                 </div>
             </div>
 
-            <div data-name="pandan roll cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+            <div data-name="pandan roll cake" data-country="indonesia" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
                 <div>
                     <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Pandan Roll ]</div>
-                    <h3 class="font-bold text-gray-800 text-base">Pandan Roll Cake</h3>
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-bold text-gray-800 text-base">Pandan Roll Cake</h3>
+                        <span class="text-[10px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-semibold border border-red-100">🇮🇩 Indonesia</span>
+                    </div>
                     <p class="text-xs text-gray-500 mt-1">Bolu gulung pandan wangi dengan isian krim manis.</p>
                 </div>
                 <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
@@ -121,12 +140,12 @@
         </div>
     </main>
 
-    <main id="tab-pembayaran" class="flex-1 p-4 max-w-md w-full mx-auto hidden">
+    <main id="tab-pembayaran" class="flex-1 p-4 max-w-md w-full mx-auto hidden pb-10">
         <button id="btn-kembali" onclick="returningToCatalog()" class="text-emerald-700 font-semibold flex items-center space-x-1 mb-4 hover:underline text-sm">
             <span>← Kembali Ubah Pesanan</span>
         </button>
 
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-6 space-y-6 relative">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-6 space-y-5 relative">
             <div class="flex flex-col items-center border-b border-gray-100 pb-4">
                 <div id="status-icon" class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl font-bold mb-2">
                     ⏳
@@ -161,14 +180,42 @@
                     <div id="checkout-invoice-list" class="space-y-1 text-gray-600"></div>
                 </div>
 
+                <div id="discount-section" class="border border-dashed border-emerald-300 bg-emerald-50/40 p-3 rounded-xl space-y-2">
+                    <button onclick="toggleVoucherModal()" class="w-full flex items-center justify-between font-bold text-emerald-800 text-[11px] bg-emerald-100/70 px-2.5 py-1.5 rounded-lg hover:bg-emerald-100 transition">
+                        <span id="selected-voucher-text">🎟️ Pakai Diskon / Voucher</span>
+                        <span class="text-emerald-600 text-[10px]">Lihat ></span>
+                    </button>
+                    
+                    <div id="voucher-list" class="hidden space-y-1.5 pt-1">
+                        <div onclick="applyVoucher('persen', 10, 'Diskon Kilat 10%')" class="border border-gray-200 bg-white p-2 rounded-lg cursor-pointer hover:border-emerald-500 transition flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-gray-800 text-[11px]">🎟️ Diskon Kilat 10%</p>
+                                <p class="text-[9px] text-gray-400">Potongan langsung dari subtotal</p>
+                            </div>
+                        </div>
+                        <div onclick="applyVoucher('nominal', 10000, 'Potongan Ongkir Rp10k')" class="border border-gray-200 bg-white p-2 rounded-lg cursor-pointer hover:border-emerald-500 transition flex justify-between items-center">
+                            <div>
+                                <p class="font-bold text-gray-800 text-[11px]">🚚 Potongan Ongkir Rp 10.000</p>
+                                <p class="text-[9px] text-gray-400">Hemat ongkos kirim flat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <hr class="border-gray-100">
-                <div class="flex justify-between items-center pt-1">
-                    <span class="text-sm font-bold text-gray-800">Jumlah Transfer</span>
-                    <span class="text-lg font-bold text-emerald-600" id="checkout-total-price">Rp 0</span>
+                <div class="space-y-1">
+                    <div id="row-potongan" class="justify-between text-red-600 font-medium hidden">
+                        <span>Potongan Diskon</span>
+                        <span id="checkout-discount-price">-Rp 0</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-1">
+                        <span class="text-sm font-bold text-gray-800">Jumlah Transfer</span>
+                        <span class="text-lg font-bold text-emerald-600" id="checkout-total-price">Rp 0</span>
+                    </div>
                 </div>
             </div>
 
-            <div id="payment-options-container" class="space-y-3 pt-2">
+            <div id="payment-options-container" class="space-y-3 pt-1">
                 <div class="grid grid-cols-2 gap-2">
                     <label id="label-qris" class="border-2 border-emerald-600 bg-emerald-50/50 rounded-xl p-2.5 flex flex-col items-center justify-center cursor-pointer text-center">
                         <input type="radio" name="payment-option" value="qris" checked class="hidden" onclick="pilihMetodeVisual('qris')">
@@ -192,6 +239,8 @@
 
     <script>
         let keranjang = {};
+        let subtotalMurni = 0;
+        let nilaiPotongan = 0;
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -202,6 +251,38 @@
                 setTimeout(() => splash.remove(), 150);
             }, 600); 
         });
+
+        function tampilkanPilihanNegara() {
+            document.getElementById('country-options').classList.remove('hidden');
+        }
+
+        function tutupPilihanNegaraMousse(event) {
+            if (!document.getElementById('header-search-bar').contains(event.target)) {
+                document.getElementById('country-options').classList.add('hidden');
+            }
+        }
+
+        function filterNegara(negara) {
+            const semuaCardKue = document.querySelectorAll('.product-card');
+            const pesanKosong = document.getElementById('not-found-msg');
+            let adaKueYangCocok = false;
+
+            semuaCardKue.forEach(card => {
+                const asalNegara = card.getAttribute('data-country');
+                if (negara === 'semua' || asalNegara === negara) {
+                    card.classList.remove('hidden');
+                    adaKueYangCocok = true;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            if (adaKueYangCocok) pesanKosong.classList.add('hidden');
+            else pesanKosong.classList.remove('hidden');
+
+            document.getElementById('country-options').classList.add('hidden');
+            document.getElementById('search-input').value = negara === 'semua' ? '' : negara.toUpperCase();
+        }
 
         function cariKue() {
             const kataKunci = document.getElementById('search-input').value.toLowerCase();
@@ -242,7 +323,6 @@
             perbaruiTampilanKeranjangGoFood();
         }
 
-        // LOGIKA BARU: Update Keranjang mirip interface GoFood
         function perbaruiTampilanKeranjangGoFood() {
             const cartElement = document.getElementById('gofood-cart');
             const priceElement = document.getElementById('gofood-price');
@@ -259,7 +339,6 @@
 
             if (totalKue > 0) {
                 cartElement.classList.remove('hidden');
-                // Beri sedikit penundaan agar efek transisi CSS muncul
                 setTimeout(() => {
                     cartElement.classList.remove('translate-y-24', 'opacity-0');
                 }, 10);
@@ -274,13 +353,40 @@
             }
         }
 
+        // LOGIKA BARU: Buka/Tutup Menu List Voucher
+        function toggleVoucherModal() {
+            const list = document.getElementById('voucher-list');
+            list.classList.toggle('hidden');
+        }
+
+        // LOGIKA BARU: Terapkan potongan harga dari voucher diskon
+        function applyVoucher(tipe, nilai, namaVoucher) {
+            if(tipe === 'persen') {
+                nilaiPotongan = (subtotalMurni * nilai) / 100;
+            } else if(tipe === 'nominal') {
+                nilaiPotongan = nilai;
+            }
+
+            // Batasi agar potongan tidak minus dari harga total
+            if (nilaiPotongan > subtotalMurni) nilaiPotongan = subtotalMurni;
+
+            const totalAkhir = subtotalMurni - nilaiPotongan;
+
+            document.getElementById('selected-voucher-text').innerText = `✅ Tersimpan: ${namaVoucher}`;
+            
+            const rowPotongan = document.getElementById('row-potongan');
+            rowPotongan.className = "flex justify-between text-red-600 font-medium";
+            document.getElementById('checkout-discount-price').innerText = `-Rp ${nilaiPotongan.toLocaleString('id-ID')}`;
+            
+            document.getElementById('checkout-total-price').innerText = `Rp ${totalAkhir.toLocaleString('id-ID')}`;
+            toggleVoucherModal();
+        }
+
         function pindahKeTabPembayaran() {
             if (Object.keys(keranjang).length === 0) return;
 
-            // KETENTUAN BARU: Sembunyikan Logo dan Search Bar saat di halaman Pembayaran
             document.getElementById('brand-logo').classList.add('hidden');
             document.getElementById('header-search-bar').classList.add('hidden');
-            // Menjaga perataan kiri tombol menu agar rapi
             document.getElementById('header-left-side').classList.remove('space-x-3');
 
             const sekarang = new Date();
@@ -307,25 +413,30 @@
 
             const invoiceContainer = document.getElementById('checkout-invoice-list');
             invoiceContainer.innerHTML = '';
-            let totalHarga = 0;
+            subtotalMurni = 0;
+            nilaiPotongan = 0;
+
+            // Reset status voucher saat masuk halaman bayar
+            document.getElementById('selected-voucher-text').innerText = "🎟️ Pakai Diskon / Voucher";
+            document.getElementById('row-potongan').className = "justify-between text-red-600 font-medium hidden";
+            document.getElementById('voucher-list').classList.add('hidden');
 
             Object.keys(keranjang).forEach(kunci => {
                 const item = keranjang[kunci];
                 const subTotal = item.jumlah * item.harga;
-                totalHarga += subTotal;
+                subtotalMurni += subTotal;
                 const row = document.createElement('div');
                 row.className = 'flex justify-between py-0.5 text-gray-700';
                 row.innerHTML = `<span>${item.nama} (x${item.jumlah})</span> <span class="font-medium text-gray-900">Rp ${subTotal.toLocaleString('id-ID')}</span>`;
                 invoiceContainer.appendChild(row);
             });
 
-            document.getElementById('checkout-total-price').innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
+            document.getElementById('checkout-total-price').innerText = `Rp ${subtotalMurni.toLocaleString('id-ID')}`;
             document.getElementById('tab-etalase').classList.add('hidden');
             document.getElementById('tab-pembayaran').classList.remove('hidden');
         }
 
         function returningToCatalog() {
-            // Kembalikan Logo dan Search Bar ketika kembali ke halaman utama
             document.getElementById('brand-logo').classList.remove('hidden');
             document.getElementById('header-search-bar').classList.remove('hidden');
             document.getElementById('header-left-side').classList.add('space-x-3');
@@ -381,6 +492,7 @@
 
             document.getElementById('payment-options-container').classList.add('hidden');
             document.getElementById('btn-kembali').classList.add('hidden');
+            document.getElementById('discount-section').classList.add('hidden');
 
             btnUtama.disabled = false;
             btnUtama.innerText = "Transaksi Selesai & Reset Toko";
@@ -392,6 +504,7 @@
             keranjang = {};
             document.getElementById('p1').innerText = '0';
             document.getElementById('p2').innerText = '0';
+            document.getElementById('discount-section').classList.remove('hidden');
             perbaruiTampilanKeranjangGoFood();
             returningToCatalog();
         }
