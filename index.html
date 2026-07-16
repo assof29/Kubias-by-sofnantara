@@ -181,6 +181,15 @@
             <span>← Back to Catalog</span>
         </button>
 
+        <div class="grid grid-cols-2 gap-2 p-1.5 bg-[#1E2328] rounded-2xl mb-4 border border-gray-800">
+            <button id="tab-kirim-anda" onclick="pilihPengantaran('anda')" class="py-3 text-xs font-bold rounded-xl transition-all bg-matcha-light text-white shadow-md">
+                🛵 Tempat Anda
+            </button>
+            <button id="tab-kirim-toko" onclick="pilihPengantaran('toko')" class="py-3 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-400 hover:text-gray-200">
+                🏪 Ambil di Toko
+            </button>
+        </div>
+
         <div class="receipt-dark rounded-[2.5rem] shadow-2xl overflow-hidden p-8 space-y-6">
             <div class="border-b border-gray-800 pb-5">
                 <h2 class="text-gray-400 text-sm font-medium tracking-wide">Rincian transaksi</h2>
@@ -194,6 +203,12 @@
                         <div id="struk-status-icon" class="w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center text-[11px] text-[#1A1E22] font-bold">⏳</div>
                     </div>
                 </div>
+                
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-500">Pengantaran</span>
+                    <span id="struk-pengantaran" class="font-medium text-gray-200 text-xs bg-gray-800 px-2.5 py-1 rounded-lg border border-gray-700">Kirim ke Tempat Anda</span>
+                </div>
+
                 <div class="flex justify-between items-center">
                     <span class="text-gray-500">Metode pembayaran</span>
                     <div class="flex items-center space-x-2 text-gray-200">
@@ -215,13 +230,13 @@
                 </div>
 
                 <div id="discount-section">
-                    <button onclick="toggleVoucherModal()" class="w-full flex items-center justify-between font-bold text-matcha-light text-xs bg-emerald-900/20 px-4 py-3 rounded-2xl hover:bg-emerald-900/40 transition">
-                        <span id="selected-voucher-text">🎟️ Use Promo / Voucher</span>
-                        <span>></span>
+                    <button onclick="toggleVoucherModal()" class="w-full flex items-center justify-between font-bold text-emerald-400 text-xs bg-emerald-950/40 px-4 py-3 rounded-2xl hover:bg-emerald-900/40 transition border border-emerald-900/30">
+                        <span id="selected-voucher-text" class="text-emerald-400">🎟️ Use Promo / Voucher</span>
+                        <span class="text-emerald-400">></span>
                     </button>
                     <div id="voucher-list" class="hidden mt-3 space-y-2">
                         <div onclick="applyVoucher('persen', 10, 'Matcha Flash 10%')" class="bg-[#252C32] p-4 rounded-xl cursor-pointer border border-gray-800 hover:border-matcha-light transition">
-                            <p class="font-bold text-gray-200 text-xs">🎟️ Matcha Flash 10%</p>
+                            <p class="font-bold text-emerald-400 text-xs">🎟️ Matcha Flash 10%</p>
                         </div>
                     </div>
                 </div>
@@ -230,9 +245,10 @@
 
                 <div class="flex justify-between text-gray-400"><span>Jumlah</span><span id="checkout-subtotal-price">Rp 0</span></div>
                 <div id="row-potongan" class="justify-between text-rose-500 hidden"><span>Potongan Diskon</span><span id="checkout-discount-price">-Rp 0</span></div>
+                
                 <div class="flex justify-between text-gray-400">
                     <span>Biaya admin</span>
-                    <span><del class="opacity-40">Rp2.000</del> <span class="text-green-500 ml-1">Gratis!</span></span>
+                    <span class="text-gray-200 font-medium">Rp1.000</span>
                 </div>
 
                 <hr class="border-gray-800">
@@ -264,6 +280,8 @@
         let subtotalMurni = 0;
         let nilaiPotongan = 0;
         let vendorAktif = 'GoPay';
+        let tipePengantaran = 'anda'; // Default pengantaran tempat anda
+        const BIAYA_ADMIN = 1000;
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -277,9 +295,7 @@
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
-            
             sidebar.classList.toggle('-translate-x-full');
-            
             if (sidebar.classList.contains('-translate-x-full')) {
                 overlay.classList.add('opacity-0', 'pointer-events-none');
                 overlay.classList.remove('opacity-100');
@@ -364,7 +380,7 @@
             });
 
             document.getElementById('checkout-subtotal-price').innerText = `Rp${subtotalMurni.toLocaleString()}`;
-            document.getElementById('checkout-total-price').innerText = `Rp${subtotalMurni.toLocaleString()}`;
+            document.getElementById('checkout-total-price').innerText = `Rp${(subtotalMurni + BIAYA_ADMIN).toLocaleString()}`;
             
             document.getElementById('tab-etalase').classList.add('hidden');
             document.getElementById('tab-pembayaran').classList.remove('hidden');
@@ -378,18 +394,37 @@
             document.getElementById('tab-etalase').classList.remove('hidden');
         }
 
+        // FUNGSI BARU: Mengontrol Tab Pengantaran
+        function pilihPengantaran(opsi) {
+            tipePengantaran = opsi;
+            const btnAnda = document.getElementById('tab-kirim-anda');
+            const btnToko = document.getElementById('tab-kirim-toko');
+            const strukPengantaran = document.getElementById('struk-pengantaran');
+
+            if(opsi === 'anda') {
+                btnAnda.className = "py-3 text-xs font-bold rounded-xl transition-all bg-matcha-light text-white shadow-md";
+                btnToko.className = "py-3 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-400 hover:text-gray-200";
+                strukPengantaran.innerText = "Kirim ke Tempat Anda";
+            } else {
+                btnToko.className = "py-3 text-xs font-bold rounded-xl transition-all bg-matcha-light text-white shadow-md";
+                btnAnda.className = "py-3 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-400 hover:text-gray-200";
+                strukPengantaran.innerText = "Ambil di Toko Kue";
+            }
+        }
+
         function toggleVoucherModal() { document.getElementById('voucher-list').classList.toggle('hidden'); }
         function applyVoucher(tipe, val, name) {
             nilaiPotongan = (subtotalMurni * val) / 100;
-            document.getElementById('selected-voucher-text').innerText = `✅ Applied: ${name}`;
+            // Menjamin teks label voucher tetap berwarna emerald cerah (text-emerald-400) setelah diaplikasikan
+            document.getElementById('selected-voucher-text').innerHTML = `<span class="text-emerald-400">✅ Applied: ${name}</span>`;
             const row = document.getElementById('row-potongan');
             row.className = "flex justify-between text-rose-500 font-medium";
             document.getElementById('checkout-discount-price').innerText = `-Rp${nilaiPotongan.toLocaleString()}`;
-            document.getElementById('checkout-total-price').innerText = `Rp${(subtotalMurni - nilaiPotongan).toLocaleString()}`;
+            
+            document.getElementById('checkout-total-price').innerText = `Rp${(subtotalMurni - nilaiPotongan + BIAYA_ADMIN).toLocaleString()}`;
             toggleVoucherModal();
         }
 
-        // UPDATE: Text dinonaktifkan/diubah menjadi QRIS
         function pilihMetodeVisual(m) {
             const isQ = m === 'qris';
             const subMenu = document.getElementById('ewallet-sub-options');
