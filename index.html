@@ -46,15 +46,6 @@
                     <p class="text-xs uppercase tracking-wider text-emerald-400 font-semibold">Customer Service</p>
                     <p class="text-base font-medium mt-1">+62 812-3456-7890</p>
                 </div>
-                <div>
-                    <p class="text-xs uppercase tracking-wider text-emerald-400 font-semibold mb-2">Media Sosial</p>
-                    <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-emerald-800 transition text-sm">
-                        <span>📸 Instagram: @kubias.bakery</span>
-                    </a>
-                    <a href="#" class="flex items-center space-x-2 p-2 rounded hover:bg-emerald-800 transition text-sm">
-                        <span>📱 TikTok: @kubias_bakery</span>
-                    </a>
-                </div>
             </div>
         </div>
         <div class="p-5 border-t border-emerald-700 text-center text-xs text-emerald-400">
@@ -100,6 +91,36 @@
                         </div>
                     </div>
                 </div>
+                <div data-name="chocolate fudge cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Chocolate Fudge ]</div>
+                        <h3 class="font-bold text-gray-800 text-base">Chocolate Fudge Cake</h3>
+                        <p class="text-xs text-gray-500 mt-1">Kue cokelat pekat berlapis fudge yang lumer di lidah.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
+                        <span class="font-bold text-emerald-600 text-sm">Rp 42.000</span>
+                        <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
+                            <button onclick="ubahJumlah('p3', -1, 'Chocolate Fudge Cake', 42000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
+                            <span id="p3" class="mx-3 text-sm font-bold text-emerald-900">0</span>
+                            <button onclick="ubahJumlah('p3', 1, 'Chocolate Fudge Cake', 42000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div data-name="strawberry cheesecake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                    <div>
+                        <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Cheesecake ]</div>
+                        <h3 class="font-bold text-gray-800 text-base">Strawberry Cheesecake</h3>
+                        <p class="text-xs text-gray-500 mt-1">Kue keju panggang lembut dengan selai stroberi segar.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
+                        <span class="font-bold text-emerald-600 text-sm">Rp 48.000</span>
+                        <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
+                            <button onclick="ubahJumlah('p4', -1, 'Strawberry Cheesecake', 48000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
+                            <span id="p4" class="mx-3 text-sm font-bold text-emerald-900">0</span>
+                            <button onclick="ubahJumlah('p4', 1, 'Strawberry Cheesecake', 48000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <p id="not-found-msg" class="text-center text-gray-400 py-10 hidden">Kue yang kamu cari tidak ditemukan...</p>
         </div>
@@ -138,13 +159,12 @@
         </button>
 
         <div class="bg-white rounded-3xl border border-emerald-100 shadow-xl overflow-hidden p-6 space-y-6 relative">
-            
             <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-emerald-400 to-emerald-600"></div>
 
             <div class="flex justify-between items-start border-b border-dashed border-gray-200 pb-4">
                 <div>
                     <h2 class="text-xl font-bold text-emerald-700 tracking-wide">STRUK PEMBELIAN ONLINE</h2>
-                    <p class="text-xs text-gray-400 mt-0.5" id="struk-tanggal">Nota: #KB-20260716</p>
+                    <p class="text-xs text-gray-400 mt-0.5" id="struk-id">Nota: #KB-PENDING</p>
                 </div>
                 <div id="payment-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 flex items-center space-x-1">
                     <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
@@ -154,8 +174,7 @@
 
             <div>
                 <span class="text-xs uppercase font-bold text-gray-400 tracking-wider block mb-2">Daftar Kue:</span>
-                <div id="checkout-invoice-list" class="space-y-2 bg-gray-50 p-3.5 rounded-2xl border border-gray-100 text-sm">
-                    </div>
+                <div id="checkout-invoice-list" class="space-y-2 bg-gray-50 p-3.5 rounded-2xl border border-gray-100 text-sm"></div>
             </div>
 
             <div class="flex justify-between items-center bg-emerald-50 border border-emerald-100 p-4 rounded-2xl">
@@ -190,6 +209,7 @@
 
     <script>
         let keranjang = {};
+        let notaSekarang = "";
 
         function cariKue() {
             const kataKunci = document.getElementById('search-input').value.toLowerCase();
@@ -264,7 +284,10 @@
                 return;
             }
 
-            // Kembalikan UI struk ke status awal (Belum Bayar)
+            // Generate nomor nota acak unik
+            notaSekarang = "KB-" + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('struk-id').innerText = "Nota: #" + notaSekarang;
+
             document.getElementById('payment-badge').className = "px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 flex items-center space-x-1";
             document.getElementById('payment-badge').innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span><span>PENDING</span>';
             document.getElementById('payment-options-container').classList.remove('hidden');
@@ -272,7 +295,6 @@
             document.getElementById('btn-pay-final').innerText = "Konfirmasi & Bayar Sekarang";
             document.getElementById('btn-pay-final').setAttribute('onclick', 'prosesBayarFinal()');
 
-            // Cetak Invoice Struk
             const invoiceContainer = document.getElementById('checkout-invoice-list');
             invoiceContainer.innerHTML = '';
             let totalHarga = 0;
@@ -313,27 +335,47 @@
             }
         }
 
-        // AKSI MENGUBAH STATUS STRUK MENJADI LUNAS
         function prosesBayarFinal() {
-            // 1. Ubah Lencana Status menjadi Lunas (Hijau)
             const badge = document.getElementById('payment-badge');
             badge.className = "px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 flex items-center space-x-1";
             badge.innerHTML = '<span>✅ LUNAS</span>';
 
-            // 2. Sembunyikan pilihan opsi bank karena pembayaran sudah sukses
             document.getElementById('payment-options-container').classList.add('hidden');
             document.getElementById('btn-kembali').classList.add('hidden');
 
-            // 3. Ubah fungsi tombol utama menjadi tombol "Kembali Belanja"
             const btnUtama = document.getElementById('btn-pay-final');
-            btnUtama.innerText = "Sukses! Kembali ke Toko";
-            btnUtama.setAttribute('onclick', 'resetDanPulang()');
+            btnUtama.innerText = "Kirim Struk ke WhatsApp Admin";
+            btnUtama.className = "w-full bg-green-600 text-white font-bold py-3.5 rounded-2xl shadow-lg hover:bg-green-700 transition tracking-wide text-sm";
+            btnUtama.setAttribute('onclick', 'kirimWhatsApp()');
         }
 
-        function resetDanPulang() {
+        function kirimWhatsApp() {
+            const metodeTerpilih = document.querySelector('input[name="payment-option"]:checked').value.toUpperCase();
+            let totalHarga = document.getElementById('checkout-total-price').innerText;
+            
+            // Susun teks kiriman WA
+            let pesan = `Halo Kubias Bakery, saya ingin mengonfirmasi pesanan.\n\n`;
+            pesan += `🧾 *NO. NOTA:* #${notaSekarang}\n`;
+            pesan += `📌 *STATUS:* LUNAS\n`;
+            pesan += `💳 *METODE:* ${metodeTerpilih}\n\n`;
+            pesan += `📦 *DAFTAR KUE:*\n`;
+            
+            Object.keys(keranjang).forEach(kunci => {
+                const item = keranjang[kunci];
+                pesan += `- ${item.nama} (${item.jumlah}x)\n`;
+            });
+            
+            pesan += `\n💰 *TOTAL TAGIHAN:* ${totalHarga}\n\nMohon segera diproses ya, terima kasih!`;
+            
+            // Encode teks ke format URL
+            const urlWhatsApp = `https://wa.me/6281234567890?text=${encodeURIComponent(pesan)}`;
+            
+            // Buka tab WhatsApp baru
+            window.open(urlWhatsApp, '_blank');
+            
+            // Reset aplikasi kembali ke awal
             keranjang = {};
-            document.getElementById('p1').innerText = '0';
-            document.getElementById('p2').innerText = '0';
+            document.querySelectorAll('.product-card span[id]').forEach(el => el.innerText = '0');
             perbaruiTampilanKeranjang();
             kembaliKeEtalase();
         }
