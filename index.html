@@ -1,4 +1,4 @@
-     <!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -25,17 +25,17 @@
     </div>
 
     <header class="bg-white shadow-sm border-b border-emerald-100 sticky top-0 z-40 px-4 py-3 flex items-center justify-between">
-        <div class="flex items-center space-x-3">
+        <div id="header-left-side" class="flex items-center space-x-3">
             <button onclick="toggleSidebar()" class="text-emerald-700 hover:text-emerald-950 focus:outline-none p-1 rounded-md hover:bg-emerald-50 transition">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
-            <div class="flex items-baseline space-x-2">
+            <div id="brand-logo" class="flex items-baseline space-x-2">
                 <span class="text-2xl font-bold text-emerald-600 tracking-wide">Kubias</span>
                 <span class="text-xs text-emerald-400 font-medium">by SofNantara .P</span>
             </div>
         </div>
 
-        <div class="w-48 sm:w-64">
+        <div id="header-search-bar" class="w-48 sm:w-64">
             <div class="relative">
                 <input id="search-input" oninput="cariKue()" type="text" placeholder="Cari kue kesukaanmu..." class="w-full text-sm bg-emerald-50 border border-emerald-200 rounded-full pl-3 pr-8 py-1.5 focus:outline-none focus:border-emerald-500 transition">
                 <svg class="w-4 h-4 text-emerald-500 absolute right-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -64,73 +64,60 @@
     </div>
     <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black opacity-40 z-40 hidden"></div>
 
-    <main id="tab-etalase" class="flex-1 p-4 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="md:col-span-2">
-            <h2 class="text-lg font-bold text-emerald-800 mb-4 flex items-center">
-                <span class="bg-emerald-600 w-2 h-5 rounded-full mr-2 inline-block"></span>
-                Etalase Kue Segar
-            </h2>
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div data-name="matcha mousse cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Matcha Cake ]</div>
-                        <h3 class="font-bold text-gray-800 text-base">Matcha Mousse Cake</h3>
-                        <p class="text-xs text-gray-500 mt-1">Kue lembut dengan kombinasi teh hijau asli yang creamy.</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
-                        <span class="font-bold text-emerald-600 text-sm">Rp 45.000</span>
-                        <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
-                            <button onclick="ubahJumlah('p1', -1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
-                            <span id="p1" class="mx-3 text-sm font-bold text-emerald-900">0</span>
-                            <button onclick="ubahJumlah('p1', 1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div data-name="pandan roll cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Pandan Roll ]</div>
-                        <h3 class="font-bold text-gray-800 text-base">Pandan Roll Cake</h3>
-                        <p class="text-xs text-gray-500 mt-1">Bolu gulung pandan wangi dengan isian krim manis.</p>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
-                        <span class="font-bold text-emerald-600 text-sm">Rp 38.000</span>
-                        <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
-                            <button onclick="ubahJumlah('p2', -1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
-                            <span id="p2" class="mx-3 text-sm font-bold text-emerald-900">0</span>
-                            <button onclick="ubahJumlah('p2', 1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p id="not-found-msg" class="text-center text-gray-400 py-10 hidden">Kue yang kamu cari tidak ditemukan...</p>
-        </div>
-
-        <div class="space-y-4">
-            <h2 class="text-lg font-bold text-emerald-800 mb-2 flex items-center">
-                <span class="bg-emerald-600 w-2 h-5 rounded-full mr-2 inline-block"></span>
-                Keranjang Belanja
-            </h2>
-            <div class="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm flex flex-col justify-between min-h-[300px]">
+    <main id="tab-etalase" class="flex-1 p-4 max-w-4xl w-full mx-auto pb-24">
+        <h2 class="text-lg font-bold text-emerald-800 mb-4 flex items-center">
+            <span class="bg-emerald-600 w-2 h-5 rounded-full mr-2 inline-block"></span>
+            Etalase Kue Segar
+        </h2>
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div data-name="matcha mousse cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
                 <div>
-                    <div class="text-sm font-bold text-emerald-900 border-b border-gray-100 pb-2 mb-3 flex justify-between">
-                        <span>Item Terpilih</span>
-                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full" id="total-items">0 Kue</span>
-                    </div>
-                    <div id="cart-items" class="space-y-2 text-sm text-gray-500">
-                        <p class="text-center text-gray-400 py-10">Keranjang masih kosong.</p>
-                    </div>
+                    <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Matcha Cake ]</div>
+                    <h3 class="font-bold text-gray-800 text-base">Matcha Mousse Cake</h3>
+                    <p class="text-xs text-gray-500 mt-1">Kue lembut dengan kombinasi teh hijau asli yang creamy.</p>
                 </div>
-                <div class="border-t border-gray-100 pt-3 mt-4">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-sm font-medium text-gray-500">Subtotal:</span>
-                        <span class="text-xl font-bold text-emerald-700" id="total-price">Rp 0</span>
+                <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
+                    <span class="font-bold text-emerald-600 text-sm">Rp 45.000</span>
+                    <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
+                        <button onclick="ubahJumlah('p1', -1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
+                        <span id="p1" class="mx-3 text-sm font-bold text-emerald-900">0</span>
+                        <button onclick="ubahJumlah('p1', 1, 'Matcha Mousse Cake', 45000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
                     </div>
-                    <button onclick="pindahKeTabPembayaran()" class="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-md hover:bg-emerald-700 transition flex items-center justify-center text-sm">
-                        <span>Lanjut ke Pembayaran</span>
-                    </button>
                 </div>
             </div>
+
+            <div data-name="pandan roll cake" class="product-card bg-white rounded-2xl p-4 shadow-sm border border-emerald-100 flex flex-col justify-between">
+                <div>
+                    <div class="w-full h-36 bg-emerald-100 rounded-xl mb-3 flex items-center justify-center text-emerald-600 font-medium text-sm">[ Foto Pandan Roll ]</div>
+                    <h3 class="font-bold text-gray-800 text-base">Pandan Roll Cake</h3>
+                    <p class="text-xs text-gray-500 mt-1">Bolu gulung pandan wangi dengan isian krim manis.</p>
+                </div>
+                <div class="flex items-center justify-between mt-4 pt-3 border-t border-gray-50">
+                    <span class="font-bold text-emerald-600 text-sm">Rp 38.000</span>
+                    <div class="flex items-center bg-emerald-50 rounded-full p-1 border border-emerald-200">
+                        <button onclick="ubahJumlah('p2', -1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">-</button>
+                        <span id="p2" class="mx-3 text-sm font-bold text-emerald-900">0</span>
+                        <button onclick="ubahJumlah('p2', 1, 'Pandan Roll Cake', 38000)" class="w-7 h-7 flex items-center justify-center bg-white rounded-full text-emerald-700 font-bold shadow-sm">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p id="not-found-msg" class="text-center text-gray-400 py-10 hidden">Kue yang kamu cari tidak ditemukan...</p>
+
+        <div id="gofood-cart" class="fixed bottom-4 inset-x-4 max-w-xl mx-auto bg-emerald-700 text-white p-3.5 rounded-2xl shadow-xl flex items-center justify-between transform translate-y-24 opacity-0 transition-all duration-300 ease-in-out z-40 hidden">
+            <div class="flex items-center space-x-3">
+                <div class="bg-emerald-800 p-2 rounded-xl text-lg relative">
+                    🛍️
+                    <span id="gofood-count" class="absolute -top-1.5 -right-1.5 bg-red-500 text-white font-bold text-[10px] px-1.5 py-0.2 rounded-full border border-emerald-700">0</span>
+                </div>
+                <div>
+                    <p id="gofood-price" class="font-bold text-sm tracking-wide">Rp 0</p>
+                    <p id="gofood-desc" class="text-[10px] text-emerald-200 font-medium">Belum termasuk ongkir</p>
+                </div>
+            </div>
+            <button onclick="pindahKeTabPembayaran()" class="bg-white text-emerald-800 font-bold text-xs px-4 py-2.5 rounded-xl hover:bg-emerald-50 transition active:scale-95">
+                Lanjut Pembayaran →
+            </button>
         </div>
     </main>
 
@@ -206,7 +193,6 @@
     <script>
         let keranjang = {};
 
-        // REVISI UTAMA: Splash screen berdurasi kilasan instan saja (600ms muncul + 150ms transisi)
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
@@ -253,42 +239,49 @@
             } else {
                 delete keranjang[idProduk];
             }
-            perbaruiTampilanKeranjang();
+            perbaruiTampilanKeranjangGoFood();
         }
 
-        function perbaruiTampilanKeranjang() {
-            const containerItems = document.getElementById('cart-items');
-            const containerTotal = document.getElementById('total-price');
-            const containerCount = document.getElementById('total-items');
+        // LOGIKA BARU: Update Keranjang mirip interface GoFood
+        function perbaruiTampilanKeranjangGoFood() {
+            const cartElement = document.getElementById('gofood-cart');
+            const priceElement = document.getElementById('gofood-price');
+            const countElement = document.getElementById('gofood-count');
             
-            containerItems.innerHTML = '';
             let totalHarga = 0;
             let totalKue = 0;
 
-            if (Object.keys(keranjang).length === 0) {
-                containerItems.innerHTML = '<p class="text-center text-gray-400 py-10">Keranjang masih kosong.</p>';
-            } else {
-                Object.keys(keranjang).forEach(kunci => {
-                    const item = keranjang[kunci];
-                    const subTotal = item.jumlah * item.harga;
-                    totalHarga += subTotal;
-                    totalKue += item.jumlah;
+            Object.keys(keranjang).forEach(kunci => {
+                const item = keranjang[kunci];
+                totalHarga += item.jumlah * item.harga;
+                totalKue += item.jumlah;
+            });
 
-                    const itemRow = document.createElement('div');
-                    itemRow.className = 'flex justify-between items-center bg-gray-50 p-2.5 rounded-xl text-xs';
-                    itemRow.innerHTML = `<div><span class="font-bold text-gray-800">${item.nama}</span><span class="text-emerald-600 block">${item.jumlah}x</span></div><span class="font-bold text-gray-700">Rp ${subTotal.toLocaleString('id-ID')}</span>`;
-                    containerItems.appendChild(itemRow);
-                });
+            if (totalKue > 0) {
+                cartElement.classList.remove('hidden');
+                // Beri sedikit penundaan agar efek transisi CSS muncul
+                setTimeout(() => {
+                    cartElement.classList.remove('translate-y-24', 'opacity-0');
+                }, 10);
+                
+                priceElement.innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
+                countElement.innerText = totalKue;
+            } else {
+                cartElement.classList.add('translate-y-24', 'opacity-0');
+                setTimeout(() => {
+                    cartElement.classList.add('hidden');
+                }, 300);
             }
-            containerCount.innerText = `${totalKue} Kue`;
-            containerTotal.innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
         }
 
         function pindahKeTabPembayaran() {
-            if (Object.keys(keranjang).length === 0) {
-                alert('Keranjang belanja kosong!');
-                return;
-            }
+            if (Object.keys(keranjang).length === 0) return;
+
+            // KETENTUAN BARU: Sembunyikan Logo dan Search Bar saat di halaman Pembayaran
+            document.getElementById('brand-logo').classList.add('hidden');
+            document.getElementById('header-search-bar').classList.add('hidden');
+            // Menjaga perataan kiri tombol menu agar rapi
+            document.getElementById('header-left-side').classList.remove('space-x-3');
 
             const sekarang = new Date();
             const formatWaktu = sekarang.toLocaleDateString('id-ID', { year: 'numeric', month: '2-digit', day: '2-digit' }) + " " + sekarang.toLocaleTimeString('id-ID');
@@ -332,6 +325,11 @@
         }
 
         function returningToCatalog() {
+            // Kembalikan Logo dan Search Bar ketika kembali ke halaman utama
+            document.getElementById('brand-logo').classList.remove('hidden');
+            document.getElementById('header-search-bar').classList.remove('hidden');
+            document.getElementById('header-left-side').classList.add('space-x-3');
+
             document.getElementById('tab-pembayaran').classList.add('hidden');
             document.getElementById('tab-etalase').classList.remove('hidden');
         }
@@ -394,7 +392,7 @@
             keranjang = {};
             document.getElementById('p1').innerText = '0';
             document.getElementById('p2').innerText = '0';
-            perbaruiTampilanKeranjang();
+            perbaruiTampilanKeranjangGoFood();
             returningToCatalog();
         }
     </script>
