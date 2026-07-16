@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+     <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -190,6 +190,12 @@
             </button>
         </div>
 
+        <div id="container-alamat" class="bg-[#1E2328] rounded-2xl p-4 mb-4 border border-gray-800 transition-all duration-300">
+            <label class="block text-xs font-bold text-emerald-400 mb-2 uppercase tracking-wide">📍 Alamat Pengiriman</label>
+            <textarea id="input-alamat" rows="2" placeholder="Masukkan alamat lengkap rumah, nomor jalan, blok, atau patokan Anda di sini..." 
+            class="w-full text-xs bg-[#14181B] border border-gray-800 rounded-xl p-3 text-gray-200 placeholder-gray-600 focus:outline-none focus:border-matcha-light transition-colors resize-none"></textarea>
+        </div>
+
         <div class="receipt-dark rounded-[2.5rem] shadow-2xl overflow-hidden p-8 space-y-6">
             <div class="border-b border-gray-800 pb-5">
                 <h2 class="text-gray-400 text-sm font-medium tracking-wide">Rincian transaksi</h2>
@@ -280,7 +286,7 @@
         let subtotalMurni = 0;
         let nilaiPotongan = 0;
         let vendorAktif = 'GoPay';
-        let tipePengantaran = 'anda'; // Default pengantaran tempat anda
+        let tipePengantaran = 'anda';
         const BIAYA_ADMIN = 1000;
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -394,28 +400,30 @@
             document.getElementById('tab-etalase').classList.remove('hidden');
         }
 
-        // FUNGSI BARU: Mengontrol Tab Pengantaran
+        // DIUBAH: Fungsi pengantaran sekarang juga menampilkan/menyembunyikan kolom alamat pengisian
         function pilihPengantaran(opsi) {
             tipePengantaran = opsi;
             const btnAnda = document.getElementById('tab-kirim-anda');
             const btnToko = document.getElementById('tab-kirim-toko');
             const strukPengantaran = document.getElementById('struk-pengantaran');
+            const containerAlamat = document.getElementById('container-alamat');
 
             if(opsi === 'anda') {
                 btnAnda.className = "py-3 text-xs font-bold rounded-xl transition-all bg-matcha-light text-white shadow-md";
                 btnToko.className = "py-3 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-400 hover:text-gray-200";
                 strukPengantaran.innerText = "Kirim ke Tempat Anda";
+                containerAlamat.classList.remove('hidden'); // Menampilkan form alamat
             } else {
                 btnToko.className = "py-3 text-xs font-bold rounded-xl transition-all bg-matcha-light text-white shadow-md";
                 btnAnda.className = "py-3 text-xs font-bold rounded-xl transition-all bg-transparent text-gray-400 hover:text-gray-200";
                 strukPengantaran.innerText = "Ambil di Toko Kue";
+                containerAlamat.classList.add('hidden'); // Menyembunyikan form alamat
             }
         }
 
         function toggleVoucherModal() { document.getElementById('voucher-list').classList.toggle('hidden'); }
         function applyVoucher(tipe, val, name) {
             nilaiPotongan = (subtotalMurni * val) / 100;
-            // Menjamin teks label voucher tetap berwarna emerald cerah (text-emerald-400) setelah diaplikasikan
             document.getElementById('selected-voucher-text').innerHTML = `<span class="text-emerald-400">✅ Applied: ${name}</span>`;
             const row = document.getElementById('row-potongan');
             row.className = "flex justify-between text-rose-500 font-medium";
@@ -457,6 +465,16 @@
         }
 
         function mulaiProsesLoading() {
+            // Validasi alamat jika opsi Tempat Anda dipilih
+            if (tipePengantaran === 'anda') {
+                const alamatInput = document.getElementById('input-alamat').value.trim();
+                if (alamatInput === "") {
+                    alert("Silakan isi alamat pengiriman Anda terlebih dahulu!");
+                    document.getElementById('input-alamat').focus();
+                    return;
+                }
+            }
+
             const btn = document.getElementById('btn-pay-final');
             document.getElementById('struk-status-text').innerText = "Processing...";
             document.getElementById('struk-status-icon').classList.add('animate-spin');
