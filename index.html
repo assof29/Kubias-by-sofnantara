@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,6 @@
         .btn-gradient { background: linear-gradient(135deg, var(--matcha), var(--matcha-light)); box-shadow: 0 4px 15px rgba(58, 90, 64, 0.3); }
         .receipt-dark { background-color: #1A1E22; border: 1px solid #2D3439; }
         
-        /* Hide scrollbar for Chrome, Safari and Opera */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -198,7 +197,7 @@
                 <div class="flex justify-between items-center">
                     <span class="text-gray-500">Metode pembayaran</span>
                     <div class="flex items-center space-x-2 text-gray-200">
-                        <span id="struk-metode" class="font-medium">GoPay Saldo</span>
+                        <span id="struk-metode" class="font-medium">QRIS (GoPay)</span>
                         <div class="w-5 h-5 rounded bg-cyan-500 flex items-center justify-center text-[10px] text-white">💳</div>
                     </div>
                 </div>
@@ -246,8 +245,14 @@
             </div>
 
             <div id="payment-options-container" class="grid grid-cols-2 gap-3 mt-6">
-                <button id="btn-qris-choice" onclick="pilihMetodeVisual('qris')" class="border border-matcha-light bg-emerald-900/30 rounded-2xl p-3 text-xs font-bold text-emerald-400 transition-all">GoPay Saldo</button>
+                <button id="btn-qris-choice" onclick="pilihMetodeVisual('qris')" class="border border-matcha-light bg-emerald-900/30 rounded-2xl p-3 text-xs font-bold text-emerald-400 transition-all">QRIS</button>
                 <button id="btn-tf-choice" onclick="pilihMetodeVisual('transfer')" class="border border-gray-800 bg-transparent rounded-2xl p-3 text-xs font-bold text-gray-500 transition-all">Bank Transfer</button>
+            </div>
+
+            <div id="ewallet-sub-options" class="bg-black/20 border border-gray-800 rounded-2xl p-3 grid grid-cols-3 gap-2 mt-2 transition-all duration-300">
+                <button id="btn-vendor-gopay" onclick="setEWalletVendor('GoPay')" class="bg-emerald-900/40 border border-matcha-light text-emerald-400 rounded-xl py-2 text-[11px] font-bold transition-all">GoPay</button>
+                <button id="btn-vendor-dana" onclick="setEWalletVendor('DANA')" class="bg-transparent border border-gray-800 text-gray-400 rounded-xl py-2 text-[11px] font-bold transition-all">DANA</button>
+                <button id="btn-vendor-shopeepay" onclick="setEWalletVendor('ShopeePay')" class="bg-transparent border border-gray-800 text-gray-400 rounded-xl py-2 text-[11px] font-bold transition-all">ShopeePay</button>
             </div>
 
             <button id="btn-pay-final" onclick="mulaiProsesLoading()" class="w-full btn-gradient text-white font-bold py-4 rounded-2xl mt-4 shadow-xl active:scale-95 transition-all text-sm tracking-widest uppercase">Konfirmasi Pembayaran</button>
@@ -258,6 +263,7 @@
         let keranjang = {};
         let subtotalMurni = 0;
         let nilaiPotongan = 0;
+        let vendorAktif = 'GoPay';
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -383,11 +389,36 @@
             toggleVoucherModal();
         }
 
+        // UPDATE: Text dinonaktifkan/diubah menjadi QRIS
         function pilihMetodeVisual(m) {
             const isQ = m === 'qris';
+            const subMenu = document.getElementById('ewallet-sub-options');
+            
             document.getElementById('btn-qris-choice').className = isQ ? "border border-matcha-light bg-emerald-900/30 rounded-2xl p-3 text-xs font-bold text-emerald-400" : "border border-gray-800 rounded-2xl p-3 text-xs font-bold text-gray-500";
             document.getElementById('btn-tf-choice').className = !isQ ? "border border-matcha-light bg-emerald-900/30 rounded-2xl p-3 text-xs font-bold text-emerald-400" : "border border-gray-800 rounded-2xl p-3 text-xs font-bold text-gray-500";
-            document.getElementById('struk-metode').innerText = isQ ? "GoPay Saldo" : "Bank Transfer";
+            
+            if (isQ) {
+                document.getElementById('struk-metode').innerText = `QRIS (${vendorAktif})`;
+                subMenu.classList.remove('hidden');
+            } else {
+                document.getElementById('struk-metode').innerText = "Bank Transfer";
+                subMenu.classList.add('hidden');
+            }
+        }
+
+        function setEWalletVendor(vendor) {
+            vendorAktif = vendor;
+            document.getElementById('struk-metode').innerText = `QRIS (${vendor})`;
+            
+            const listVendor = ['GoPay', 'DANA', 'ShopeePay'];
+            listVendor.forEach(v => {
+                const targetBtn = document.getElementById(`btn-vendor-${v.toLowerCase()}`);
+                if (v === vendor) {
+                    targetBtn.className = "bg-emerald-900/40 border border-matcha-light text-emerald-400 rounded-xl py-2 text-[11px] font-bold transition-all";
+                } else {
+                    targetBtn.className = "bg-transparent border border-gray-800 text-gray-500 rounded-xl py-2 text-[11px] font-bold transition-all";
+                }
+            });
         }
 
         function mulaiProsesLoading() {
